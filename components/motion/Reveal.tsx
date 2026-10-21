@@ -33,7 +33,7 @@ export function Reveal({ start = "top 82%", children, ...props }: RevealProps) {
           tl.fromTo(
             fades,
             { autoAlpha: 0, y: 32 },
-            { autoAlpha: 1, y: 0, stagger: 0.08, duration: 1.1 },
+            { autoAlpha: 1, y: 0, stagger: 0.08, duration: 1.1, clearProps: "transform" },
             lines.length ? 0.2 : 0,
           );
       });

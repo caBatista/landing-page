@@ -1,3 +1,4 @@
+import { Contact } from "@/components/sections/contact/Contact";
 import { Gallery } from "@/components/sections/gallery/Gallery";
 import { Hero } from "@/components/sections/hero/Hero";
 import { Journey } from "@/components/sections/journey/Journey";
@@ -18,6 +19,7 @@ export default async function HomePage() {
       <Projects locale={locale} />
       <Journey locale={locale} />
       <OffCode locale={locale} />
+      <Contact locale={locale} />
     </>
   );
 }

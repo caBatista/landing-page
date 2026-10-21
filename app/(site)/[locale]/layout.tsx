@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "@/app/globals.css";
+import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { Preloader } from "@/components/layout/Preloader";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
@@ -55,6 +56,7 @@ export default async function SiteLayout({ children }: LayoutProps<"/[locale]">)
           <main id="main" tabIndex={-1} className="outline-none">
             {children}
           </main>
+          <Footer locale={locale} />
         </SmoothScroll>
       </body>
     </html>
