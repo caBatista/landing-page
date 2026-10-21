@@ -9,19 +9,19 @@ export type NavItem = {
 };
 
 export const nav: NavItem[] = [
-  { id: "top", label: { en: "Home", pt: "Início" }, image: "/images/gallery/01.jpg" },
+  { id: "top", label: { en: "Home", pt: "Início" }, image: "/images/gallery/01.jpeg" },
   {
     id: "on-code",
     label: { en: "On Code", pt: "On Code" },
-    image: "/images/projects/home-sweet-home.jpg",
+    image: "/images/projects/home-sweet-home.png",
   },
   {
     id: "off-code",
     label: { en: "Off Code", pt: "Off Code" },
-    image: "/images/gallery/02.jpg",
+    image: "/images/gallery/02.jpeg",
   },
-  { id: "journey", label: { en: "Journey", pt: "Trajetória" }, image: "/images/gallery/03.jpg" },
-  { id: "contact", label: { en: "Contact", pt: "Contato" }, image: "/images/gallery/04.jpg" },
+  { id: "journey", label: { en: "Journey", pt: "Trajetória" }, image: "/images/gallery/03.jpeg" },
+  { id: "contact", label: { en: "Contact", pt: "Contato" }, image: "/images/gallery/04.jpeg" },
 ];
 
 /** Interface copy. Section content lives in the other files in /content. */
@@ -33,11 +33,14 @@ export const ui = {
   mainNav: { en: "Main", pt: "Principal" },
   language: { en: "Language", pt: "Idioma" },
   languageNames: { en: { en: "English", pt: "Inglês" }, pt: { en: "Portuguese", pt: "Português" } },
-  getInTouch: { en: "Get in touch", pt: "Fale comigo" },
 
   hero: {
     nextRace: { en: "Next race", pt: "Próxima corrida" },
     scroll: { en: "Scroll", pt: "Role" },
+  },
+
+  manifesto: {
+    eyebrow: { en: "About", pt: "Sobre" },
   },
 
   gallery: {
@@ -73,7 +76,7 @@ export const ui = {
     stack: { en: "Stack", pt: "Stack" },
     links: {
       live: { en: "Live site", pt: "Site no ar" },
-      repo: { en: "GitHub", pt: "GitHub" },
+      repo: { en: "Repo", pt: "Repo" },
       backend: { en: "Backend repo", pt: "Repo backend" },
       frontend: { en: "Frontend repo", pt: "Repo frontend" },
     },

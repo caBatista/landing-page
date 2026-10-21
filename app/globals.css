@@ -111,24 +111,71 @@ html.lenis body {
 }
 
 /*
- * First-visit preloader. Repeat visits in the same session set
- * html[data-visited] before paint, so the overlay never shows.
- * The CSS animation is a no-JS safety net that removes it after 2.4s.
+ * First-visit preloader (1.2s), all CSS so it runs from first paint. Repeat visits
+ * (html[data-visited], set before paint) and reduced motion never show it.
+ * lib/intro.ts reads the "preloader-exit" animation to sync the hero intro.
  */
+@property --preload {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
 .preloader {
-  animation: preloader-failsafe 0.4s 2.4s forwards;
+  animation: preloader-exit 0.4s cubic-bezier(0.87, 0, 0.13, 1) 0.8s forwards;
+}
+.preloader-logo {
+  animation:
+    preloader-logo-in 0.6s var(--ease-out-expo) both,
+    preloader-logo-out 0.25s ease-in 0.7s forwards;
+}
+.preloader-label {
+  animation: preloader-fade-in 0.5s ease-out 0.1s both;
+}
+.preloader-count::after {
+  counter-reset: preload var(--preload);
+  content: counter(preload, decimal-leading-zero);
+  animation: preloader-count 0.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 html[data-visited] .preloader {
   display: none;
 }
-@keyframes preloader-failsafe {
+@keyframes preloader-exit {
   to {
+    transform: translateY(-100%);
     visibility: hidden;
+  }
+}
+@keyframes preloader-logo-in {
+  from {
+    clip-path: inset(100% 0 0 0);
+    transform: translateY(40%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes preloader-logo-out {
+  to {
     opacity: 0;
+    transform: scale(0.85);
+  }
+}
+@keyframes preloader-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+@keyframes preloader-count {
+  to {
+    --preload: 100;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .preloader {
+    display: none;
+  }
   *,
   *::before,
   *::after {
@@ -137,4 +184,54 @@ html[data-visited] .preloader {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Repeat visits skip the preloader: keep hero intro elements hidden until GSAP takes over. */
+@media (prefers-reduced-motion: no-preference) {
+  html[data-visited] [data-hero-intro] {
+    visibility: hidden;
+  }
+}
+
+/* Project dialog entrance (instant with reduced motion via the global rule). */
+.project-dialog[open] {
+  animation: dialog-in 0.6s var(--ease-out-expo);
+}
+.project-dialog[open]::backdrop {
+  animation: backdrop-in 0.4s ease-out;
+}
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(2rem) scale(0.98);
+  }
+}
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.toast {
+  animation: toast-in 0.5s var(--ease-out-expo);
+}
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.96);
+  }
+}
+
+/*
+ * Sections below the pinned gallery skip layout and paint until they near the
+ * viewport. Their entrances use IntersectionObserver, so no ScrollTrigger
+ * positions depend on them.
+ */
+@utility defer-render {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 1000px;
+}
+/* In-page navigation needs real section heights to land on its target. */
+html[data-render-all] .defer-render {
+  content-visibility: visible;
 }

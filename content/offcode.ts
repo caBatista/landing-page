@@ -19,7 +19,9 @@ export type OffCodeBlock = {
 /** Newest first. */
 export const races: RaceResult[] = [
   { race: "Corrida da Longevidade", distanceKm: 5, time: "25:24", date: "2026-09" },
-  { race: "Corrida do Inter", distanceKm: 10, time: "54:00", date: "2026-08" },
+  { race: "Corrida do Inter", distanceKm: 10, time: "55:08", date: "2026-08" },
+  { race: "Maratona Internacional de Maceió", distanceKm: 5, time: "26:22", date: "2026-07" },
+  { race: "POA Night Run", distanceKm: 5, time: "55:37", date: "2026-03" },
 ];
 
 export const running = {
@@ -30,7 +32,6 @@ export const running = {
   },
 } satisfies Omit<OffCodeBlock, "image">;
 
-// TODO: personalise both texts (rig, sims and tracks; position and team).
 export const simRacing: OffCodeBlock = {
   title: { en: "Sim racing", pt: "Sim racing" },
   text: {
@@ -38,10 +39,10 @@ export const simRacing: OffCodeBlock = {
     pt: "Mesma obsessão, outro cockpit: pontos de frenagem, telemetria e mais uma volta atrás de um décimo.",
   },
   image: {
-    src: "/images/offcode/sim-racing.jpg", // TODO: photo of the rig or a race
-    width: 1600,
-    height: 1067,
-    alt: { en: "TODO: describe sim racing photo", pt: "TODO: descrever foto de sim racing" },
+    src: "/images/offcode/_RRP3158.jpg",
+    width: 3240,
+    height: 2160,
+    alt: { en: "Go-Karting Photo", pt: "Foto de Kart" },
   },
 };
 
@@ -52,9 +53,9 @@ export const volleyball: OffCodeBlock = {
     pt: "Leitura rápida, rodízio limpo e muita comunicação. O esporte coletivo que me ensinou como bons sistemas conversam.",
   },
   image: {
-    src: "/images/offcode/volleyball.jpg", // TODO: volleyball photo
-    width: 1600,
-    height: 1067,
-    alt: { en: "TODO: describe volleyball photo", pt: "TODO: descrever foto de vôlei" },
+    src: "/images/offcode/volley-alt.jpeg",
+    width: 849,
+    height: 735,
+    alt: { en: "Volleyball Photo", pt: "Foto de Vôlei" },
   },
 };

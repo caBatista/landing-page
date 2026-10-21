@@ -27,7 +27,7 @@ export const projects: Project[] = [
       en: "Personal project · Solo, full stack",
       pt: "Projeto pessoal · Solo, full stack",
     },
-    year: "TODO: year",
+    year: "2025",
     summary: {
       en: "A digital housewarming gift registry and marketplace. Friends and family buy selected household items or make monetary donations to help furnish a new home.",
       pt: "Uma lista de presentes de casa nova digital, com loja integrada. Amigos e família compram itens selecionados para a casa ou fazem doações em dinheiro para ajudar a mobiliar o novo lar.",
@@ -69,20 +69,19 @@ export const projects: Project[] = [
     ],
     image: {
       frame: "browser",
-      // TODO: screenshot — product grid, light theme (base) and dark theme (hover).
       base: {
-        src: "/images/projects/home-sweet-home.jpg",
-        width: 1600,
-        height: 1000,
+        src: "/images/projects/home-sweet-home.png",
+        width: 3002,
+        height: 1720,
         alt: {
           en: "Home Sweet Home product grid in the light theme",
           pt: "Grade de produtos do Home Sweet Home no tema claro",
         },
       },
       hover: {
-        src: "/images/projects/home-sweet-home-dark.jpg",
-        width: 1600,
-        height: 1000,
+        src: "/images/projects/home-sweet-home-dark.png",
+        width: 3002,
+        height: 1720,
         alt: {
           en: "Home Sweet Home product grid in the dark theme",
           pt: "Grade de produtos do Home Sweet Home no tema escuro",
@@ -94,7 +93,7 @@ export const projects: Project[] = [
     slug: "fluimap",
     name: "FluiMap",
     context: { en: "AGES · PUCRS", pt: "AGES · PUCRS" },
-    year: "TODO: year",
+    year: "2025",
     summary: {
       en: "A web app for managers to assess team dynamics and engagement through structured surveys: creation, login-free email distribution and analysis powered by an R statistical model API.",
       pt: "Uma aplicação web para gestores avaliarem a dinâmica e o engajamento de times com questionários estruturados: criação, envio por email sem login e análise com uma API de modelo estatístico em R.",
@@ -140,20 +139,19 @@ export const projects: Project[] = [
     links: [{ kind: "repo", href: "https://tools.ages.pucrs.br/fluimap/core.git" }],
     image: {
       frame: "browser",
-      // TODO: screenshot — dark dashboard with the team network graph.
       base: {
-        src: "/images/projects/fluimap.jpg",
-        width: 1600,
-        height: 1000,
+        src: "/images/projects/fluimap.png",
+        width: 2880,
+        height: 1694,
         alt: {
           en: "FluiMap results dashboard with the team network graph",
           pt: "Dashboard de resultados do FluiMap com o grafo de rede do time",
         },
       },
       hover: {
-        src: "/images/projects/fluimap-alt.jpg",
-        width: 1600,
-        height: 1000,
+        src: "/images/projects/fluimap-alt.png",
+        width: 1468,
+        height: 917,
         alt: {
           en: "FluiMap engagement metrics view",
           pt: "Visão de métricas de engajamento do FluiMap",
@@ -165,7 +163,7 @@ export const projects: Project[] = [
     slug: "ezenplo",
     name: "eZenplo Dashboard",
     context: { en: "AGES · PUCRS · Key contributor", pt: "AGES · PUCRS · Contribuidor principal" },
-    year: "TODO: year",
+    year: "2024",
     summary: {
       en: "A corporate well-being platform dashboard with data visualization, employee and manager management and CSV processing, built to improve data analysis and operational efficiency.",
       pt: "Dashboard de uma plataforma de bem-estar corporativo, com visualização de dados, gestão de colaboradores e gestores e processamento de CSV, feito para melhorar a análise de dados e a eficiência operacional.",
@@ -215,20 +213,19 @@ export const projects: Project[] = [
     ],
     image: {
       frame: "browser",
-      // TODO: screenshot — dimensions filter + stacked bar chart with green/yellow/red bands.
       base: {
-        src: "/images/projects/ezenplo.jpg",
-        width: 1600,
-        height: 1000,
+        src: "/images/projects/ezenplo.jpeg",
+        width: 1162,
+        height: 744,
         alt: {
           en: "eZenplo dashboard with a stacked bar chart per well-being dimension",
           pt: "Dashboard do eZenplo com gráfico de barras empilhadas por dimensão de bem-estar",
         },
       },
       hover: {
-        src: "/images/projects/ezenplo-alt.jpg",
-        width: 1600,
-        height: 1000,
+        src: "/images/projects/ezenplo-alt.png",
+        width: 1897,
+        height: 984,
         alt: {
           en: "eZenplo employee management table",
           pt: "Tabela de gestão de colaboradores do eZenplo",
@@ -243,7 +240,7 @@ export const projects: Project[] = [
       en: "AGES · PUCRS · São Francisco de Paula",
       pt: "AGES · PUCRS · São Francisco de Paula",
     },
-    year: "TODO: year",
+    year: "2024",
     summary: {
       en: "A full-stack platform to boost local tourism, connecting visitors with experiences, routes and businesses. I built both the Flutter mobile app and the Java Spring Boot backend.",
       pt: "Uma plataforma full stack para impulsionar o turismo local, conectando visitantes a experiências, roteiros e negócios. Construí tanto o app mobile em Flutter quanto o backend em Java Spring Boot.",
@@ -291,20 +288,19 @@ export const projects: Project[] = [
     ],
     image: {
       frame: "phone",
-      // TODO: screenshot — mobile home screen with the events carousel (portrait, ~9:19.5).
       base: {
-        src: "/images/projects/turismo-rural.jpg",
-        width: 900,
-        height: 1950,
+        src: "/images/projects/turismo-rural.png",
+        width: 565,
+        height: 996,
         alt: {
           en: "Turismo Rural app home screen with the events carousel",
           pt: "Tela inicial do app Turismo Rural com o carrossel de eventos",
         },
       },
       hover: {
-        src: "/images/projects/turismo-rural-alt.jpg",
-        width: 900,
-        height: 1950,
+        src: "/images/projects/turismo-rural-alt.png",
+        width: 493,
+        height: 995,
         alt: {
           en: "Turismo Rural route map screen",
           pt: "Tela de mapa de roteiros do Turismo Rural",

@@ -18,13 +18,13 @@ export function LocaleToggle({ locale, className }: LocaleToggleProps) {
                 hrefLang={localeTags[target]}
                 lang={localeTags[target]}
                 aria-current={current ? "true" : undefined}
-                aria-label={ui.languageNames[target][target]}
                 className={cn(
                   "grid h-8 min-w-9 place-items-center rounded-full px-2 label transition-colors",
                   current ? "bg-accent text-ink" : "hover:text-accent",
                 )}
               >
                 {target.toUpperCase()}
+                <span className="sr-only"> ({ui.languageNames[target][target]})</span>
               </a>
             </li>
           );

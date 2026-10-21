@@ -1,7 +1,15 @@
 "use client";
 
 import Lenis from "lenis";
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import {
+  createContext,
+  startTransition,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { useReducedMotion } from "@/lib/use-media-query";
 
@@ -32,8 +40,8 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     instance.on("scroll", ScrollTrigger.update);
     gsap.ticker.add(raf);
     gsap.ticker.lagSmoothing(0);
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- Lenis is an external system
-    setLenis(instance);
+    // A transition: the context change must not force still-dehydrated sections to hydrate at once.
+    startTransition(() => setLenis(instance));
     return () => {
       gsap.ticker.remove(raf);
       instance.destroy();
@@ -45,6 +53,8 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     (id: string) => {
       const target = document.getElementById(id);
       if (!target) return;
+      // Lay out deferred sections first so the target position is final.
+      document.documentElement.dataset.renderAll = "";
       if (lenis) lenis.scrollTo(id === "top" ? 0 : target, { duration: 1.4 });
       else target.scrollIntoView();
       // Move focus with the scroll so keyboard and screen reader users land in the section.
@@ -63,6 +73,20 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     },
     [lenis],
   );
+
+  // Same-page anchor links (#section) go through scrollToId too.
+  useEffect(() => {
+    const onClick = (event: MouseEvent) => {
+      const link = (event.target as Element).closest?.<HTMLAnchorElement>('a[href*="#"]');
+      if (!link || event.defaultPrevented || event.metaKey || event.ctrlKey) return;
+      const url = new URL(link.href);
+      if (url.pathname !== window.location.pathname || !url.hash) return;
+      event.preventDefault();
+      scrollToId(decodeURIComponent(url.hash.slice(1)));
+    };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, [scrollToId]);
 
   const api = useMemo(() => ({ scrollToId, setLocked }), [scrollToId, setLocked]);
   return <ScrollContext value={api}>{children}</ScrollContext>;

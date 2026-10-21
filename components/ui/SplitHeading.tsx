@@ -1,6 +1,7 @@
 import { cn } from "@/lib/cn";
 
 type SplitHeadingProps = {
+  id?: string;
   top: string;
   bottom: string;
   as?: "h1" | "h2" | "h3";
@@ -11,6 +12,7 @@ type SplitHeadingProps = {
 
 /** Huge two-line display heading ("ON / CODE"). Lines are masked for reveal animations. */
 export function SplitHeading({
+  id,
   top,
   bottom,
   as: Tag = "h2",
@@ -18,7 +20,7 @@ export function SplitHeading({
   bottomClassName,
 }: SplitHeadingProps) {
   return (
-    <Tag className={cn("display", className)}>
+    <Tag id={id} className={cn("display", className)}>
       <span className="mask-line">
         <span data-reveal-line className="block">
           {top}

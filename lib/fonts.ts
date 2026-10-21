@@ -1,7 +1,7 @@
 import { Big_Shoulders, Geist, Geist_Mono } from "next/font/google";
 
 const display = Big_Shoulders({
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   axes: ["opsz"],
   adjustFontFallback: false,
   fallback: ["Arial Narrow", "Impact", "sans-serif"],
@@ -9,7 +9,7 @@ const display = Big_Shoulders({
   display: "swap",
 });
 
-const sans = Geist({ subsets: ["latin", "latin-ext"], variable: "--font-geist", display: "swap" });
+const sans = Geist({ subsets: ["latin"], variable: "--font-geist", display: "swap" });
 
 const mono = Geist_Mono({
   subsets: ["latin"],

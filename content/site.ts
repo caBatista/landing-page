@@ -16,7 +16,6 @@ export const site = {
   lastName: "Batista",
   email: "caiobatista034@gmail.com",
 
-  /** TODO: pick your favourite at /brand and set it here. Updates logo, favicon and OG image. */
   logo: "sprint" as LogoVariant,
 
   role: {
@@ -47,8 +46,8 @@ export const site = {
 
   /** Shown in the hero. Set to `null` to hide it. */
   nextRace: {
-    name: { en: "TODO: next race name", pt: "TODO: nome da próxima corrida" },
-    date: "2026-12-31", // TODO: real race date
+    name: { en: "PANVEL RUN 2026", pt: "PANVEL RUN 2026" },
+    date: "2026-11-08",
   } as NextRace | null,
 
   preloaderLabel: {
@@ -63,15 +62,15 @@ export const site = {
   } satisfies Localized,
 
   /**
-   * The huge closing line in the footer. TODO: choose one. Alternatives:
+   * The huge closing line in the footer. Alternatives:
    *  - "No downtime. No DNF."          / "Sem downtime. Sem DNF."
    *  - "Built to last. Built to race." / "Feito pra durar. Feito pra correr."
    *  - "Ship it. Then go faster."      / "Faz o deploy. Depois acelera."
    *  - "Zero downtime. Full throttle." / "Zero downtime. Pé no fundo."
    */
   footerPhrase: {
-    en: "Always chasing the next PR.",
-    pt: "Sempre atrás do próximo PR.",
+    en: "Zero downtime. Full throttle.",
+    pt: "Zero downtime. Pé no fundo.",
   } satisfies Localized,
 
   copyright: "© 2026 Caio Batista",

@@ -1,22 +1,31 @@
-import { SplitHeading } from "@/components/ui/SplitHeading";
-import { site } from "@/content/site";
+import { Suspense } from "react";
+import { PersonJsonLd } from "@/components/layout/PersonJsonLd";
+import { Contact } from "@/components/sections/contact/Contact";
+import { Gallery } from "@/components/sections/gallery/Gallery";
+import { Hero } from "@/components/sections/hero/Hero";
+import { Journey } from "@/components/sections/journey/Journey";
+import { Manifesto } from "@/components/sections/manifesto/Manifesto";
+import { OffCode } from "@/components/sections/offcode/OffCode";
+import { OnOffCode } from "@/components/sections/onoff/OnOffCode";
+import { Projects } from "@/components/sections/projects/Projects";
 import { getLocale } from "@/i18n/server";
+
+const sections = [Manifesto, Gallery, OnOffCode, Projects, Journey, OffCode, Contact];
 
 export default async function HomePage() {
   const locale = await getLocale();
   return (
-    <section
-      id="top"
-      tabIndex={-1}
-      className="flex min-h-dvh flex-col justify-end container-x pb-16 outline-none"
-    >
-      <SplitHeading
-        as="h1"
-        top={site.firstName}
-        bottom={site.lastName}
-        className="text-[clamp(5rem,24vw,22rem)]"
-      />
-      <p className="mt-6 text-xl">{site.role[locale]}</p>
-    </section>
+    <>
+      <PersonJsonLd locale={locale} />
+      <Suspense>
+        <Hero locale={locale} />
+      </Suspense>
+      {/* Separate boundaries let React hydrate each section in its own short task. */}
+      {sections.map((Section) => (
+        <Suspense key={Section.name}>
+          <Section locale={locale} />
+        </Suspense>
+      ))}
+    </>
   );
 }
