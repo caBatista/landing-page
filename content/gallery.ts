@@ -13,8 +13,8 @@ export const gallery: GalleryItem[] = [
     type: "photo",
     image: {
       src: "/images/gallery/01.jpeg",
-      width: 1200,
-      height: 1500,
+      width: 1280,
+      height: 853,
       alt: { en: "Graduation Photo", pt: "Foto da Graduação" },
     },
     place: "Porto Alegre",
@@ -24,8 +24,8 @@ export const gallery: GalleryItem[] = [
     type: "photo",
     image: {
       src: "/images/gallery/02.jpeg",
-      width: 1600,
-      height: 1600,
+      width: 960,
+      height: 1280,
       alt: { en: "Personal Photo", pt: "Foto Pessoal" },
     },
     place: "Porto Alegre",
@@ -42,8 +42,8 @@ export const gallery: GalleryItem[] = [
     type: "photo",
     image: {
       src: "/images/gallery/03.jpeg",
-      width: 1200,
-      height: 1500,
+      width: 853,
+      height: 1280,
       alt: { en: "Maceió International Marathon", pt: "Maratona Internacional de Maceió" },
     },
     place: "Porto Alegre",
@@ -53,8 +53,8 @@ export const gallery: GalleryItem[] = [
     type: "photo",
     image: {
       src: "/images/gallery/04.jpeg",
-      width: 1100,
-      height: 950,
+      width: 960,
+      height: 1280,
       alt: { en: "Family Photo", pt: "Foto de Família" },
     },
     place: "Porto Alegre",

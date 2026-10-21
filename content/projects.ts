@@ -71,8 +71,8 @@ export const projects: Project[] = [
       frame: "browser",
       base: {
         src: "/images/projects/home-sweet-home.png",
-        width: 1600,
-        height: 1000,
+        width: 3002,
+        height: 1720,
         alt: {
           en: "Home Sweet Home product grid in the light theme",
           pt: "Grade de produtos do Home Sweet Home no tema claro",
@@ -80,8 +80,8 @@ export const projects: Project[] = [
       },
       hover: {
         src: "/images/projects/home-sweet-home-dark.png",
-        width: 1600,
-        height: 1000,
+        width: 3002,
+        height: 1720,
         alt: {
           en: "Home Sweet Home product grid in the dark theme",
           pt: "Grade de produtos do Home Sweet Home no tema escuro",
@@ -141,8 +141,8 @@ export const projects: Project[] = [
       frame: "browser",
       base: {
         src: "/images/projects/fluimap.png",
-        width: 1600,
-        height: 1000,
+        width: 2880,
+        height: 1694,
         alt: {
           en: "FluiMap results dashboard with the team network graph",
           pt: "Dashboard de resultados do FluiMap com o grafo de rede do time",
@@ -150,8 +150,8 @@ export const projects: Project[] = [
       },
       hover: {
         src: "/images/projects/fluimap-alt.png",
-        width: 1600,
-        height: 1000,
+        width: 1468,
+        height: 917,
         alt: {
           en: "FluiMap engagement metrics view",
           pt: "Visão de métricas de engajamento do FluiMap",
@@ -215,8 +215,8 @@ export const projects: Project[] = [
       frame: "browser",
       base: {
         src: "/images/projects/ezenplo.jpeg",
-        width: 1600,
-        height: 1000,
+        width: 1162,
+        height: 744,
         alt: {
           en: "eZenplo dashboard with a stacked bar chart per well-being dimension",
           pt: "Dashboard do eZenplo com gráfico de barras empilhadas por dimensão de bem-estar",
@@ -224,8 +224,8 @@ export const projects: Project[] = [
       },
       hover: {
         src: "/images/projects/ezenplo-alt.png",
-        width: 1600,
-        height: 1000,
+        width: 1897,
+        height: 984,
         alt: {
           en: "eZenplo employee management table",
           pt: "Tabela de gestão de colaboradores do eZenplo",
@@ -290,8 +290,8 @@ export const projects: Project[] = [
       frame: "phone",
       base: {
         src: "/images/projects/turismo-rural.png",
-        width: 900,
-        height: 1950,
+        width: 565,
+        height: 996,
         alt: {
           en: "Turismo Rural app home screen with the events carousel",
           pt: "Tela inicial do app Turismo Rural com o carrossel de eventos",
@@ -299,8 +299,8 @@ export const projects: Project[] = [
       },
       hover: {
         src: "/images/projects/turismo-rural-alt.png",
-        width: 900,
-        height: 1950,
+        width: 493,
+        height: 995,
         alt: {
           en: "Turismo Rural route map screen",
           pt: "Tela de mapa de roteiros do Turismo Rural",

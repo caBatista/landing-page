@@ -40,8 +40,8 @@ export const simRacing: OffCodeBlock = {
   },
   image: {
     src: "/images/offcode/_RRP3158.jpg",
-    width: 1600,
-    height: 1067,
+    width: 3240,
+    height: 2160,
     alt: { en: "Go-Karting Photo", pt: "Foto de Kart" },
   },
 };
