@@ -25,8 +25,8 @@ export function SignatureDraw({ markup, label, className }: SignatureDrawProps) 
         } else if (stroked) {
           gsap.from(shapes, {
             drawSVG: 0,
-            duration: 1.1,
-            stagger: 0.28,
+            duration: 0.9,
+            stagger: 0.22,
             ease: "power2.inOut",
             scrollTrigger: trigger,
           });

@@ -40,6 +40,10 @@ export const ui = {
     scroll: { en: "Scroll", pt: "Role" },
   },
 
+  manifesto: {
+    eyebrow: { en: "About", pt: "Sobre" },
+  },
+
   gallery: {
     title: { en: "Moments off the keyboard", pt: "Momentos longe do teclado" },
   },

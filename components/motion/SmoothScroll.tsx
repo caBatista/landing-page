@@ -27,7 +27,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (reduced) return;
-    const instance = new Lenis({ autoRaf: false, lerp: 0.11 });
+    const instance = new Lenis({ autoRaf: false, lerp: 0.11, anchors: true });
     const raf = (time: number) => instance.raf(time * 1000);
     instance.on("scroll", ScrollTrigger.update);
     gsap.ticker.add(raf);
