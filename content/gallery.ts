@@ -7,16 +7,15 @@ export type GalleryItem =
 /**
  * The horizontal gallery, in order. Any number of photos works; drop a quote
  * between photos every two or three to keep the rhythm.
- * TODO: replace the placeholder photos (files in /public/images/gallery) and captions.
  */
 export const gallery: GalleryItem[] = [
   {
     type: "photo",
     image: {
-      src: "/images/gallery/01.jpg",
+      src: "/images/gallery/01.jpeg",
       width: 1200,
       height: 1500,
-      alt: { en: "TODO: describe photo 1", pt: "TODO: descrever foto 1" },
+      alt: { en: "Graduation Photo", pt: "Foto da Graduação" },
     },
     place: "Porto Alegre",
     year: 2026,
@@ -24,10 +23,10 @@ export const gallery: GalleryItem[] = [
   {
     type: "photo",
     image: {
-      src: "/images/gallery/02.jpg",
+      src: "/images/gallery/02.jpeg",
       width: 1600,
-      height: 1067,
-      alt: { en: "TODO: describe photo 2", pt: "TODO: descrever foto 2" },
+      height: 1600,
+      alt: { en: "Personal Photo", pt: "Foto Pessoal" },
     },
     place: "Porto Alegre",
     year: 2026,
@@ -42,10 +41,10 @@ export const gallery: GalleryItem[] = [
   {
     type: "photo",
     image: {
-      src: "/images/gallery/03.jpg",
+      src: "/images/gallery/03.jpeg",
       width: 1200,
       height: 1500,
-      alt: { en: "TODO: describe photo 3", pt: "TODO: descrever foto 3" },
+      alt: { en: "Maceió International Marathon", pt: "Maratona Internacional de Maceió" },
     },
     place: "Porto Alegre",
     year: 2025,
@@ -53,10 +52,10 @@ export const gallery: GalleryItem[] = [
   {
     type: "photo",
     image: {
-      src: "/images/gallery/04.jpg",
-      width: 1600,
-      height: 1067,
-      alt: { en: "TODO: describe photo 4", pt: "TODO: descrever foto 4" },
+      src: "/images/gallery/04.jpeg",
+      width: 1100,
+      height: 950,
+      alt: { en: "Family Photo", pt: "Foto de Família" },
     },
     place: "Porto Alegre",
     year: 2025,

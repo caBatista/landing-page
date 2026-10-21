@@ -14,7 +14,6 @@ export const timeline: Milestone[] = [
     year: 2020,
     title: { en: "Intern", pt: "Estagiário" },
     company: "Instituto de Pesquisas Eldorado · Dell Technologies",
-    // TODO: review the one-liners below; they are drafts in your voice.
     line: {
       en: "First commits on enterprise software, embedded in a Dell Technologies team.",
       pt: "Primeiros commits em software corporativo, alocado em um time da Dell Technologies.",
