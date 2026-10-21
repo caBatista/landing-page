@@ -9,4 +9,9 @@ export type ImageAsset = {
   width: number;
   height: number;
   alt: Localized;
+  /**
+   * Where cropping keeps the picture, as CSS object-position ("50% 0%" keeps the
+   * top, e.g. for a head near the upper edge). Defaults to the centre.
+   */
+  focal?: string;
 };

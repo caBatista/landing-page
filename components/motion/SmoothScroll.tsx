@@ -53,8 +53,6 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     (id: string) => {
       const target = document.getElementById(id);
       if (!target) return;
-      // Lay out deferred sections first so the target position is final.
-      document.documentElement.dataset.renderAll = "";
       if (lenis) lenis.scrollTo(id === "top" ? 0 : target, { duration: 1.4 });
       else target.scrollIntoView();
       // Move focus with the scroll so keyboard and screen reader users land in the section.

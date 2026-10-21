@@ -49,6 +49,12 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* Tailwind v4 resets buttons to the default cursor; interactive controls should show a pointer. */
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+
   ::selection {
     background: var(--accent);
     color: var(--ink);
@@ -220,18 +226,4 @@ html[data-visited] .preloader {
     opacity: 0;
     transform: translateY(1rem) scale(0.96);
   }
-}
-
-/*
- * Sections below the pinned gallery skip layout and paint until they near the
- * viewport. Their entrances use IntersectionObserver, so no ScrollTrigger
- * positions depend on them.
- */
-@utility defer-render {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 1000px;
-}
-/* In-page navigation needs real section heights to land on its target. */
-html[data-render-all] .defer-render {
-  content-visibility: visible;
 }

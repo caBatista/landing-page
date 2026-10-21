@@ -19,7 +19,7 @@ export function OnOffCode({ locale }: { locale: Locale }) {
   return (
     <section
       aria-label={`${ui.onOff.on.top} / ${ui.onOff.off.top} Code`}
-      className="grid defer-render md:grid-cols-2"
+      className="grid md:grid-cols-2"
     >
       {halves.map(({ copy, target, dark }) => (
         <a

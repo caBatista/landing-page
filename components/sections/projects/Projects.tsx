@@ -13,7 +13,7 @@ export function Projects({ locale }: { locale: Locale }) {
       id="on-code"
       tabIndex={-1}
       aria-labelledby="projects-title"
-      className="container-x py-28 defer-render outline-none md:py-40"
+      className="container-x py-28 outline-none md:py-40"
     >
       <Reveal className="mb-16 md:mb-24">
         <p data-reveal-fade className="mb-6 label text-muted-strong">
