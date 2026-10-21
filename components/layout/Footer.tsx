@@ -14,7 +14,7 @@ export function Footer({ locale }: { locale: Locale }) {
   const linkClass = "transition-colors hover:text-accent";
 
   return (
-    <footer className="dark-surface overflow-hidden bg-ink text-bg">
+    <footer className="dark-surface overflow-hidden bg-ink text-bg defer-render">
       <div className="container-x pt-20 md:pt-28">
         <div className="grid grid-cols-2 gap-12 md:grid-cols-12">
           <div className="col-span-2 space-y-10 md:col-span-5">
@@ -60,7 +60,7 @@ export function Footer({ locale }: { locale: Locale }) {
           </div>
         </div>
 
-        <Reveal start="top 95%" className="mt-24 md:mt-32">
+        <Reveal offset={0.05} className="mt-24 md:mt-32">
           <FitText lines={splitBalanced(site.footerPhrase[locale])} className="text-accent" />
         </Reveal>
 

@@ -18,7 +18,7 @@ export function Journey({ locale }: { locale: Locale }) {
       id="journey"
       tabIndex={-1}
       aria-labelledby="journey-title"
-      className="container-x py-28 outline-none md:py-40"
+      className="container-x py-28 defer-render outline-none md:py-40"
     >
       <Reveal className="mb-16 md:mb-24">
         <p data-reveal-fade className="mb-6 label text-muted-strong">
@@ -33,7 +33,7 @@ export function Journey({ locale }: { locale: Locale }) {
         />
       </Reveal>
 
-      <Reveal start="top 85%">
+      <Reveal offset={0.15}>
         <ol className="relative grid gap-6 pl-8 lg:grid-cols-5 lg:gap-4 lg:pt-12 lg:pl-0">
           {/* The track */}
           <span

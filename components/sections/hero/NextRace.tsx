@@ -1,20 +1,20 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { startTransition, useEffect, useState } from "react";
 import { localeTags, type Locale } from "@/i18n/config";
 
 const TIME_ZONE = "America/Sao_Paulo";
-const subscribe = () => () => {};
 
 type NextRaceProps = { label: string; name: string; date: string; locale: Locale };
 
 /** "Next race" status pill. Renders on the client only, and only until race day ends. */
 export function NextRace({ label, name, date, locale }: NextRaceProps) {
-  const upcoming = useSyncExternalStore(
-    subscribe,
-    () => Date.now() <= new Date(`${date}T23:59:59-03:00`).getTime(),
-    () => false,
-  );
+  const [upcoming, setUpcoming] = useState(false);
+  useEffect(() => {
+    // A transition, not a sync update: a sync update here would force the rest of
+    // the page to finish hydrating in one long task.
+    startTransition(() => setUpcoming(Date.now() <= new Date(`${date}T23:59:59-03:00`).getTime()));
+  }, [date]);
   if (!upcoming) return null;
 
   const formatted = new Intl.DateTimeFormat(localeTags[locale], {

@@ -3,7 +3,9 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { cn } from "@/lib/cn";
+import { afterIdle } from "@/lib/idle";
 import { gsap, MOTION, useGSAP } from "@/lib/gsap";
+import { onceInView } from "@/lib/in-view";
 
 type ParallaxImageProps = {
   src: string;
@@ -19,34 +21,34 @@ export function ParallaxImage({ src, alt, sizes, className, amount = 10 }: Paral
   const frame = useRef<HTMLDivElement>(null);
 
   useGSAP(
-    () => {
-      gsap.matchMedia().add(MOTION.ok, () => {
-        const img = frame.current!.querySelector("img");
-        gsap.fromTo(
-          frame.current,
-          { clipPath: "inset(100% 0% 0% 0%)" },
-          {
-            clipPath: "inset(0% 0% 0% 0%)",
-            duration: 1.4,
-            ease: "expo.inOut",
-            scrollTrigger: { trigger: frame.current, start: "top 88%", once: true },
-          },
-        );
-        gsap.fromTo(
-          img,
-          { yPercent: -amount },
-          {
-            yPercent: amount,
-            ease: "none",
-            scrollTrigger: {
-              trigger: frame.current,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true,
+    (_, contextSafe) => {
+      // Set up at idle time: keeps hydration free of forced layouts.
+      const setup = contextSafe!(() => {
+        gsap.matchMedia().add(MOTION.ok, () => {
+          const img = frame.current!.querySelector("img");
+          const wipe = gsap.fromTo(
+            frame.current,
+            { clipPath: "inset(100% 0% 0% 0%)" },
+            { clipPath: "inset(0% 0% 0% 0%)", duration: 1.4, ease: "expo.inOut", paused: true },
+          );
+          gsap.fromTo(
+            img,
+            { yPercent: -amount },
+            {
+              yPercent: amount,
+              ease: "none",
+              scrollTrigger: {
+                trigger: frame.current,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+              },
             },
-          },
-        );
+          );
+          return onceInView(frame.current!, () => wipe.play(), 0.12);
+        });
       });
+      return afterIdle(setup);
     },
     { scope: frame },
   );

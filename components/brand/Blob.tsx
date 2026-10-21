@@ -1,11 +1,10 @@
 "use client";
 
-import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
 import { useId, useRef } from "react";
-import { gsap, MOTION, ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { afterIdle } from "@/lib/idle";
+import { gsap, MOTION, plugins, useGSAP } from "@/lib/gsap";
+import { whileInView } from "@/lib/in-view";
 import { blobShapes } from "./blob-shapes";
-
-gsap.registerPlugin(MorphSVGPlugin);
 
 type BlobProps = {
   seed: number;
@@ -21,30 +20,32 @@ export function Blob({ seed, className, speed = 7 }: BlobProps) {
   const shapes = blobShapes(seed);
 
   useGSAP(
-    () => {
-      gsap.matchMedia().add(MOTION.ok, () => {
-        const path = root.current!.querySelector("path")!;
-        const tl = gsap.timeline({ repeat: -1, defaults: { duration: speed, ease: "sine.inOut" } });
-        [...shapes.slice(1), shapes[0]].forEach((shape) => tl.to(path, { morphSVG: shape }));
-        const drift = gsap.to(root.current, {
-          rotation: 40,
-          xPercent: 6,
-          yPercent: -5,
-          duration: speed * 2.5,
-          ease: "sine.inOut",
-          repeat: -1,
-          yoyo: true,
-        });
-        ScrollTrigger.create({
-          trigger: root.current,
-          start: "top bottom",
-          end: "bottom top",
-          onToggle: ({ isActive }) => {
-            tl.paused(!isActive);
-            drift.paused(!isActive);
-          },
+    (_, contextSafe) => {
+      // Set up at idle time: keeps hydration free of forced layouts.
+      const setup = contextSafe!(() => {
+        gsap.matchMedia().add(MOTION.ok, () => {
+          const path = root.current!.querySelector("path")!;
+          const tl = gsap.timeline({
+            repeat: -1,
+            defaults: { duration: speed, ease: "sine.inOut" },
+          });
+          [...shapes.slice(1), shapes[0]].forEach((shape) => tl.to(path, { morphSVG: shape }));
+          const drift = gsap.to(root.current, {
+            rotation: 40,
+            xPercent: 6,
+            yPercent: -5,
+            duration: speed * 2.5,
+            ease: "sine.inOut",
+            repeat: -1,
+            yoyo: true,
+          });
+          return whileInView(root.current!, (visible) => {
+            tl.paused(!visible);
+            drift.paused(!visible);
+          });
         });
       });
+      return afterIdle(setup, plugins.morphSVG);
     },
     { scope: root },
   );

@@ -3,10 +3,11 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
 
-gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 gsap.defaults({ ease: "expo.out", duration: 1.1 });
+// Mobile browser bars resize the viewport while scrolling; don't recompute every trigger for that.
+ScrollTrigger.config({ ignoreMobileResize: true });
 
 /** gsap.matchMedia() conditions shared by every animation. */
 export const MOTION = {
@@ -14,4 +15,10 @@ export const MOTION = {
   reduce: "(prefers-reduced-motion: reduce)",
 } as const;
 
-export { gsap, ScrollTrigger, SplitText, useGSAP };
+/** Plugins used by deferred, below-the-fold effects: loaded on demand, not at startup. */
+export const plugins = {
+  morphSVG: () => import("gsap/MorphSVGPlugin").then((m) => gsap.registerPlugin(m.MorphSVGPlugin)),
+  drawSVG: () => import("gsap/DrawSVGPlugin").then((m) => gsap.registerPlugin(m.DrawSVGPlugin)),
+};
+
+export { gsap, ScrollTrigger, useGSAP };

@@ -4,25 +4,29 @@ import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import { Logo } from "@/components/brand/Logo";
 import { cn } from "@/lib/cn";
-import { onIntro } from "@/lib/intro";
+import { introDelay } from "@/lib/intro";
 import { useReducedMotion } from "@/lib/use-media-query";
 
 const MonogramCanvas = dynamic(() => import("./MonogramCanvas"), { ssr: false });
 
-function hasWebGL(): boolean {
+/** True for GPU-backed WebGL. Software renderers (SwiftShader, llvmpipe) would stutter. */
+function hasHardwareWebGL(): boolean {
   try {
-    const canvas = document.createElement("canvas");
-    return Boolean(canvas.getContext("webgl2") ?? canvas.getContext("webgl"));
+    const gl = document.createElement("canvas").getContext("webgl2");
+    if (!gl) return false;
+    const info = gl.getExtension("WEBGL_debug_renderer_info");
+    const renderer = info ? String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL)) : "";
+    gl.getExtension("WEBGL_lose_context")?.loseContext();
+    return !/swiftshader|llvmpipe|software/i.test(renderer);
   } catch {
     return false;
   }
 }
 
 /**
- * The hero's 3D CB. The flat SVG shows first; the WebGL scene loads after the
- * intro when the browser is idle (desktop) or on the first touch/scroll
- * (mobile, keeping the initial load light), then cross-fades in. Reduced
- * motion or no WebGL keeps the static SVG.
+ * The hero's 3D CB. The flat SVG shows first; the WebGL scene loads on the
+ * first interaction after the intro and cross-fades in. Reduced motion, no
+ * WebGL or a software renderer keep the static SVG.
  */
 export function HeroMonogram({ className }: { className?: string }) {
   const root = useRef<HTMLDivElement>(null);
@@ -32,31 +36,25 @@ export function HeroMonogram({ className }: { className?: string }) {
   const [ready, setReady] = useState(false);
   const [visible, setVisible] = useState(true);
 
-  // Decide when (and whether) to load the scene.
+  // Load the scene on the first interaction after the intro: it reacts to the
+  // pointer/scroll anyway, and the first load stays light.
   useEffect(() => {
     // Read the query directly: the hook reports false until after hydration.
-    if (reduced || matchMedia("(prefers-reduced-motion: reduce)").matches || !hasWebGL()) return;
-    const start = () => setLoad(true);
-    const coarse = window.matchMedia("(pointer: coarse)").matches;
-    if (coarse) {
-      const events = ["touchstart", "scroll", "pointerdown"] as const;
-      const once = () => {
-        events.forEach((e) => window.removeEventListener(e, once));
-        start();
-      };
-      events.forEach((e) => window.addEventListener(e, once, { passive: true }));
-      return () => events.forEach((e) => window.removeEventListener(e, once));
-    }
-    let idle = 0;
-    const stop = onIntro(() => {
-      idle = window.requestIdleCallback
-        ? window.requestIdleCallback(start, { timeout: 2500 })
-        : window.setTimeout(start, 1200);
-    });
-    return () => {
+    if (reduced || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const events = ["pointermove", "pointerdown", "touchstart", "scroll", "keydown"] as const;
+    const stop = () => events.forEach((e) => window.removeEventListener(e, start));
+    const start = () => {
       stop();
-      if (window.cancelIdleCallback) window.cancelIdleCallback(idle);
-      else window.clearTimeout(idle);
+      // Probing WebGL creates a context, so only do it once it is needed.
+      if (hasHardwareWebGL()) setLoad(true);
+    };
+    const timer = window.setTimeout(
+      () => events.forEach((e) => window.addEventListener(e, start, { passive: true })),
+      introDelay() ?? 0,
+    );
+    return () => {
+      window.clearTimeout(timer);
+      stop();
     };
   }, [reduced]);
 

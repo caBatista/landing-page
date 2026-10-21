@@ -39,7 +39,7 @@ export function OffCode({ locale }: { locale: Locale }) {
       id="off-code"
       tabIndex={-1}
       aria-labelledby="offcode-title"
-      className="dark-surface bg-ink container-x py-28 text-bg outline-none md:py-40"
+      className="dark-surface bg-ink container-x py-28 text-bg defer-render outline-none md:py-40"
     >
       <Reveal className="mb-16 md:mb-24">
         <p data-reveal-fade className="mb-6 label text-muted">
@@ -70,7 +70,7 @@ export function OffCode({ locale }: { locale: Locale }) {
             {running.text[locale]}
           </p>
         </Reveal>
-        <Reveal className="lg:col-span-8" start="top 85%">
+        <Reveal className="lg:col-span-8" offset={0.15}>
           <div data-reveal-fade>
             <ResultsBoard locale={locale} />
           </div>

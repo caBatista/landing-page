@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { startTransition, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Magnetic } from "@/components/motion/Magnetic";
 
@@ -12,16 +12,14 @@ type CopyEmailProps = {
 };
 
 /** "Let's talk" button: copies the email and confirms with a toast; falls back to mailto. */
-const subscribe = () => () => {};
-
 export function CopyEmail({ email, label, copied, failed }: CopyEmailProps) {
   const [message, setMessage] = useState("");
   const timer = useRef(0);
-  const mounted = useSyncExternalStore(
-    subscribe,
-    () => true,
-    () => false,
-  );
+  const [mounted, setMounted] = useState(false);
+
+  // The portal target only exists on the client. A transition keeps this from
+  // forcing the rest of the page to hydrate synchronously.
+  useEffect(() => startTransition(() => setMounted(true)), []);
 
   useEffect(() => () => window.clearTimeout(timer.current), []);
 

@@ -33,7 +33,6 @@ export const ui = {
   mainNav: { en: "Main", pt: "Principal" },
   language: { en: "Language", pt: "Idioma" },
   languageNames: { en: { en: "English", pt: "Inglês" }, pt: { en: "Portuguese", pt: "Português" } },
-  getInTouch: { en: "Get in touch", pt: "Fale comigo" },
 
   hero: {
     nextRace: { en: "Next race", pt: "Próxima corrida" },

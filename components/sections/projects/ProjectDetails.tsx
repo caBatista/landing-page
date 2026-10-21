@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { useSmoothScroll } from "@/components/motion/SmoothScroll";
+import { trapTab } from "@/lib/focus";
 
 type ProjectDetailsProps = {
   triggerLabel: string;
@@ -34,6 +35,7 @@ export function ProjectDetails({ triggerLabel, closeLabel, title, children }: Pr
         ref={dialog}
         aria-label={title}
         onClose={() => setLocked(false)}
+        onKeyDown={trapTab}
         onClick={(event) => {
           // Clicks on the backdrop land on the dialog element itself.
           if (event.target === event.currentTarget) dialog.current?.close();
