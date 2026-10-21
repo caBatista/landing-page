@@ -138,3 +138,10 @@ html[data-visited] .preloader {
     scroll-behavior: auto !important;
   }
 }
+
+/* Repeat visits skip the preloader: keep hero intro elements hidden until GSAP takes over. */
+@media (prefers-reduced-motion: no-preference) {
+  html[data-visited] [data-hero-intro] {
+    visibility: hidden;
+  }
+}
