@@ -12,7 +12,7 @@ export function RollText({ children, className }: { children: string; className?
     <span className={cn("relative block overflow-hidden leading-[1.08]!", className)}>
       <span
         className={cn(
-          "block group-hover:-translate-y-full group-focus-visible:-translate-y-full",
+          "block group-hover:-translate-y-full group-focus-visible:-translate-y-full motion-reduce:group-hover:translate-y-0 motion-reduce:group-hover:opacity-0 motion-reduce:group-focus-visible:translate-y-0 motion-reduce:group-focus-visible:opacity-0",
           MOVE,
         )}
       >
@@ -21,7 +21,7 @@ export function RollText({ children, className }: { children: string; className?
       <span
         aria-hidden
         className={cn(
-          "absolute inset-0 translate-y-full group-hover:translate-y-0 group-focus-visible:translate-y-0",
+          "absolute inset-0 translate-y-full group-hover:translate-y-0 group-focus-visible:translate-y-0 motion-reduce:translate-y-0 motion-reduce:opacity-0 motion-reduce:group-hover:opacity-100 motion-reduce:group-focus-visible:opacity-100",
           MOVE,
         )}
       >

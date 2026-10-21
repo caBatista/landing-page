@@ -4,7 +4,7 @@ import type { Project } from "@/content/projects";
 import type { Locale } from "@/i18n/config";
 
 const SWAP =
-  "transition-[clip-path,scale] duration-[900ms] ease-out-expo [clip-path:inset(100%_0_0_0)] group-hover:[clip-path:inset(0)] group-focus-within:[clip-path:inset(0)]";
+  "transition-[clip-path,scale] duration-[900ms] ease-out-expo [clip-path:inset(100%_0_0_0)] group-hover:[clip-path:inset(0)] group-focus-within:[clip-path:inset(0)] motion-reduce:opacity-0 motion-reduce:[clip-path:none] motion-reduce:group-focus-within:opacity-100 motion-reduce:group-hover:opacity-100";
 
 /**
  * Card media with the hover swap: the alternate screenshot wipes up over the

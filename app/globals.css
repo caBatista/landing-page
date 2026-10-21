@@ -178,24 +178,43 @@ html[data-visited] .preloader {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .preloader {
-    display: none;
-  }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+/*
+ * Hero entrance: pure CSS, timed against the preloader's clock (it leaves at
+ * ~0.8-1.2s), so it plays on time however late JavaScript hydrates. Repeat
+ * visits (html[data-visited]) start almost at once.
+ */
+:root {
+  --hero-delay: 0.95s;
+}
+html[data-visited] {
+  --hero-delay: 0.05s;
+}
+.hero-rise {
+  animation: hero-rise 1.5s var(--ease-out-expo) calc(var(--hero-delay) + var(--i, 0) * 90ms) both;
+}
+.hero-pop {
+  animation: hero-pop 1.8s var(--ease-out-expo) calc(var(--hero-delay) + 100ms) both;
+}
+.hero-fade {
+  animation: hero-fade 1.2s var(--ease-out-expo)
+    calc(var(--hero-delay) + 350ms + var(--i, 0) * 100ms) both;
+}
+@keyframes hero-rise {
+  from {
+    translate: 0 110%;
   }
 }
-
-/* Repeat visits skip the preloader: keep hero intro elements hidden until GSAP takes over. */
-@media (prefers-reduced-motion: no-preference) {
-  html[data-visited] [data-hero-intro] {
-    visibility: hidden;
+@keyframes hero-pop {
+  from {
+    opacity: 0;
+    scale: 0.7;
+    rotate: -6deg;
+  }
+}
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+    translate: 0 24px;
   }
 }
 
@@ -225,5 +244,49 @@ html[data-visited] .preloader {
   from {
     opacity: 0;
     transform: translateY(1rem) scale(0.96);
+  }
+}
+
+/*
+ * Reduced motion keeps simple fades and colour changes but drops movement: no
+ * preloader, sliding, wipes or looping effects. Transitions are limited to
+ * properties that don't move anything; components swap wipes for fades with
+ * Tailwind's motion-reduce: variants.
+ */
+@keyframes fade-only {
+  from {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-property:
+      opacity, color, background-color, border-color, text-decoration-color, fill, stroke !important;
+  }
+  .preloader {
+    display: none;
+  }
+  .animate-ping,
+  .animate-bounce {
+    animation: none !important;
+  }
+  :root,
+  html[data-visited] {
+    --hero-delay: 0s;
+  }
+  .hero-rise,
+  .hero-pop,
+  .hero-fade {
+    animation: fade-only 0.6s ease both;
+  }
+  .project-dialog[open],
+  .project-dialog[open]::backdrop,
+  .toast {
+    animation: fade-only 0.3s ease both;
   }
 }

@@ -34,7 +34,7 @@ export function OnOffCode({ locale }: { locale: Locale }) {
           <span
             aria-hidden
             className={cn(
-              "absolute inset-0 -z-10 origin-bottom scale-y-0 transition-transform duration-700 ease-out-expo group-hover:scale-y-100",
+              "absolute inset-0 -z-10 origin-bottom scale-y-0 transition-transform duration-700 ease-out-expo group-hover:scale-y-100 motion-reduce:scale-y-100 motion-reduce:opacity-0 motion-reduce:group-hover:opacity-100",
               dark ? "bg-ink-soft" : "bg-accent",
             )}
           />

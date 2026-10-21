@@ -50,7 +50,7 @@ export function HeroMonogram({ className }: { className?: string }) {
     };
     const timer = window.setTimeout(
       () => events.forEach((e) => window.addEventListener(e, start, { passive: true })),
-      introDelay() ?? 0,
+      introDelay(),
     );
     return () => {
       window.clearTimeout(timer);
