@@ -1,7 +1,7 @@
 /**
- * The first-visit preloader is pure CSS so it starts at first paint, not at
- * hydration. The hero intro reads the preloader's exit animation to start in
- * sync with it.
+ * The first-visit preloader and the hero entrance are pure CSS so they run from
+ * first paint, not from hydration. This file only exposes the preloader's clock
+ * to the few things that must wait for it (loading the 3D scene).
  */
 
 /**
@@ -10,20 +10,13 @@
  */
 export const visitedScript = `try{var d=document.documentElement;sessionStorage.getItem("cb-visited")?d.dataset.visited="":sessionStorage.setItem("cb-visited","1")}catch(e){}`;
 
-/** How late hydration may land after the preloader left and still play the intro. */
-const LATE_MS = 300;
-
-/**
- * Milliseconds until the hero intro should start: 0 when there is no
- * preloader (repeat visit, reduced motion), or null when the preloader already
- * left a while ago and the visible hero must not be hidden and replayed.
- */
-export function introDelay(): number | null {
+/** Milliseconds until the preloader has left: 0 when it's gone or never shown. */
+export function introDelay(): number {
   const exit = document
     .querySelector(".preloader")
     ?.getAnimations()
     .find((a) => a instanceof CSSAnimation && a.animationName === "preloader-exit");
   if (!exit) return 0;
   const remaining = Number(exit.effect?.getTiming().delay ?? 0) - Number(exit.currentTime ?? 0);
-  return remaining < -LATE_MS ? null : Math.max(0, remaining);
+  return Math.max(0, remaining);
 }

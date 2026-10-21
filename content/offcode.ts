@@ -57,5 +57,6 @@ export const volleyball: OffCodeBlock = {
     width: 849,
     height: 735,
     alt: { en: "Volleyball Photo", pt: "Foto de Vôlei" },
+    focal: "50% 0%",
   },
 };

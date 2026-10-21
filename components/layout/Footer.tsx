@@ -14,7 +14,7 @@ export function Footer({ locale }: { locale: Locale }) {
   const linkClass = "transition-colors hover:text-accent";
 
   return (
-    <footer className="dark-surface overflow-hidden bg-ink text-bg defer-render">
+    <footer className="dark-surface overflow-hidden bg-ink text-bg">
       <div className="container-x pt-20 md:pt-28">
         <div className="grid grid-cols-2 gap-12 md:grid-cols-12">
           <div className="col-span-2 space-y-10 md:col-span-5">

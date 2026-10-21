@@ -6,14 +6,20 @@ import { ui } from "@/content/ui";
 import type { Locale } from "@/i18n/config";
 import { ResultsBoard } from "./ResultsBoard";
 
+/** Frames follow the photo's own shape (between square-ish and 3:2), so little is cropped. */
+const frameRatio = ({ width, height }: OffCodeBlock["image"]) =>
+  Math.min(1.5, Math.max(1.15, width / height));
+
 function Block({ block, index, locale }: { block: OffCodeBlock; index: number; locale: Locale }) {
   return (
     <Reveal className="space-y-6">
       <ParallaxImage
         src={block.image.src}
         alt={block.image.alt[locale]}
+        focal={block.image.focal}
         sizes="(max-width: 768px) 100vw, 50vw"
-        className="aspect-[3/2] rounded-2xl bg-ink-soft"
+        className="rounded-2xl bg-ink-soft"
+        style={{ aspectRatio: frameRatio(block.image) }}
       />
       <div className="flex items-baseline justify-between gap-4 border-t border-white/10 pt-5">
         <h3 className="display text-[clamp(3rem,6vw,5rem)]">
@@ -39,7 +45,7 @@ export function OffCode({ locale }: { locale: Locale }) {
       id="off-code"
       tabIndex={-1}
       aria-labelledby="offcode-title"
-      className="dark-surface bg-ink container-x py-28 text-bg defer-render outline-none md:py-40"
+      className="dark-surface bg-ink container-x py-28 text-bg outline-none md:py-40"
     >
       <Reveal className="mb-16 md:mb-24">
         <p data-reveal-fade className="mb-6 label text-muted">

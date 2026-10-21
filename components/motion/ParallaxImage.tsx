@@ -12,12 +12,23 @@ type ParallaxImageProps = {
   alt: string;
   sizes: string;
   className?: string;
-  /** Vertical drift in percent of the frame while it crosses the viewport. */
+  style?: React.CSSProperties;
+  /** CSS object-position that decides what survives cropping (see ImageAsset.focal). */
+  focal?: string;
+  /** Upward drift in percent of the frame while it crosses the viewport. */
   amount?: number;
 };
 
 /** Image that wipes in with a clip-path and drifts inside its frame on scroll. */
-export function ParallaxImage({ src, alt, sizes, className, amount = 10 }: ParallaxImageProps) {
+export function ParallaxImage({
+  src,
+  alt,
+  sizes,
+  className,
+  style,
+  focal,
+  amount = 4,
+}: ParallaxImageProps) {
   const frame = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -33,9 +44,9 @@ export function ParallaxImage({ src, alt, sizes, className, amount = 10 }: Paral
           );
           gsap.fromTo(
             img,
-            { yPercent: -amount },
+            { yPercent: 0 },
             {
-              yPercent: amount,
+              yPercent: -amount,
               ease: "none",
               scrollTrigger: {
                 trigger: frame.current,
@@ -54,8 +65,16 @@ export function ParallaxImage({ src, alt, sizes, className, amount = 10 }: Paral
   );
 
   return (
-    <div ref={frame} className={cn("relative overflow-hidden", className)}>
-      <Image src={src} alt={alt} fill sizes={sizes} className="scale-[1.25] object-cover" />
+    <div ref={frame} className={cn("relative overflow-hidden", className)} style={style}>
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes={sizes}
+        // Zoom from the top edge and only drift upward, so the top of the picture is never cropped by more than `amount`.
+        className="origin-top scale-[1.08] object-cover"
+        style={{ objectPosition: focal }}
+      />
     </div>
   );
 }

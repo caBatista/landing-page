@@ -25,11 +25,14 @@ export function Hero({ locale }: { locale: Locale }) {
       </div>
 
       <div className="flex min-h-11 flex-wrap items-center justify-between gap-3">
-        <p data-hero-intro data-hero-fade className="label text-muted-strong">
+        <p
+          className="hero-fade label text-muted-strong"
+          style={{ "--i": 0 } as React.CSSProperties}
+        >
           {site.location[locale]}
         </p>
         {race && (
-          <div data-hero-intro data-hero-fade>
+          <div className="hero-fade" style={{ "--i": 1 } as React.CSSProperties}>
             <NextRace
               label={ui.hero.nextRace[locale]}
               name={race.name[locale]}
@@ -40,37 +43,35 @@ export function Hero({ locale }: { locale: Locale }) {
         )}
       </div>
 
-      <div
-        data-hero-intro
-        data-hero-logo
-        className="pointer-events-none absolute top-[19%] left-1/2 w-[min(84vw,440px)] -translate-x-1/2 md:top-[12%] md:right-[3%] md:left-auto md:w-[min(44vw,600px)] md:translate-x-0"
-      >
+      <div className="hero-pop pointer-events-none absolute top-[19%] left-1/2 w-[min(84vw,440px)] -translate-x-1/2 md:top-[12%] md:right-[3%] md:left-auto md:w-[min(44vw,600px)] md:translate-x-0">
         <HeroMonogram className="aspect-square w-full" />
       </div>
 
       <div data-hero-name className="relative mt-auto">
         <h1 id="hero-title" className="display text-[clamp(4.75rem,min(31vw,40svh),30rem)]">
           <span className="mask-line">
-            <span data-hero-intro data-hero-line className="block">
+            <span className="hero-rise block" style={{ "--i": 0 } as React.CSSProperties}>
               {site.firstName}
             </span>
           </span>
           <span className="mask-line">
-            <span data-hero-intro data-hero-line className="block">
+            <span className="hero-rise block" style={{ "--i": 1 } as React.CSSProperties}>
               {site.lastName}
             </span>
           </span>
         </h1>
         <div className="mt-5 flex flex-wrap items-end justify-between gap-4 md:mt-7">
-          <p data-hero-intro data-hero-fade className="text-xl font-medium md:text-3xl">
+          <p
+            className="hero-fade text-xl font-medium md:text-3xl"
+            style={{ "--i": 2 } as React.CSSProperties}
+          >
             {site.role[locale]}
             <span className="mt-1 block text-base font-normal md:text-lg">{site.team[locale]}</span>
           </p>
           <p
-            data-hero-intro
-            data-hero-fade
             aria-hidden
-            className="flex items-center gap-2 label text-muted-strong"
+            className="hero-fade flex items-center gap-2 label text-muted-strong"
+            style={{ "--i": 3 } as React.CSSProperties}
           >
             {ui.hero.scroll[locale]}
             <span className="inline-block animate-bounce">↓</span>

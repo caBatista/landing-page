@@ -15,7 +15,7 @@ export function Contact({ locale }: { locale: Locale }) {
       id="contact"
       tabIndex={-1}
       aria-labelledby="contact-title"
-      className="container-x py-28 defer-render outline-none md:py-40"
+      className="container-x py-28 outline-none md:py-40"
     >
       <Reveal className="mb-16 md:mb-24">
         <p data-reveal-fade className="mb-6 label text-muted-strong">
@@ -59,7 +59,7 @@ export function Contact({ locale }: { locale: Locale }) {
                   >
                     <span
                       aria-hidden
-                      className="absolute inset-0 -z-10 origin-left scale-x-0 bg-accent transition-transform duration-700 ease-out-expo group-hover:scale-x-100 group-focus-visible:scale-x-100"
+                      className="absolute inset-0 -z-10 origin-left scale-x-0 bg-accent transition-transform duration-700 ease-out-expo group-hover:scale-x-100 group-focus-visible:scale-x-100 motion-reduce:scale-x-100 motion-reduce:opacity-0 motion-reduce:group-hover:opacity-100 motion-reduce:group-focus-visible:opacity-100"
                     />
                     <RollText className="display text-[clamp(3rem,8vw,6.5rem)] transition-[padding] duration-700 ease-out-expo group-hover:pl-4">
                       {social.label}
