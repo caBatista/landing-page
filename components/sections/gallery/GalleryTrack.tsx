@@ -4,16 +4,17 @@ import { useRef } from "react";
 import { gsap, MOTION, useGSAP } from "@/lib/gsap";
 
 /**
- * Pins its section and turns vertical scroll into horizontal travel of the
- * `[data-track]` row; photos drift inside their frames as they pass. With
- * reduced motion the row is a plain swipeable, snapping scroller instead.
+ * With a mouse or trackpad: pins its section and turns vertical scroll into
+ * horizontal travel of the `[data-track]` row, photos drifting inside their
+ * frames. On touch screens (and with reduced motion) nothing is hijacked: the
+ * row is a plain native swipe scroller with snapping (styled in Gallery.tsx).
  */
 export function GalleryTrack({ children, ...props }: React.ComponentProps<"div">) {
   const root = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
-      gsap.matchMedia().add(MOTION.ok, () => {
+      gsap.matchMedia().add(MOTION.desktop, () => {
         const track = root.current!.querySelector<HTMLElement>("[data-track]")!;
         const distance = () => Math.max(0, track.scrollWidth - window.innerWidth);
         const travel = gsap.to(track, {

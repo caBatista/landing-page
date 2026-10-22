@@ -34,7 +34,9 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
   const [lenis, setLenis] = useState<Lenis | null>(null);
 
   useEffect(() => {
-    if (reduced) return;
+    // Touch screens already scroll natively and smoothly; Lenis would only add a
+    // per-frame cost there. Read the queries directly: the hook is false until hydrated.
+    if (reduced || window.matchMedia("(pointer: coarse)").matches) return;
     const instance = new Lenis({ autoRaf: false, lerp: 0.11 });
     const raf = (time: number) => instance.raf(time * 1000);
     instance.on("scroll", ScrollTrigger.update);
@@ -54,7 +56,10 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
       const target = document.getElementById(id);
       if (!target) return;
       if (lenis) lenis.scrollTo(id === "top" ? 0 : target, { duration: 1.4 });
-      else target.scrollIntoView();
+      else {
+        const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        target.scrollIntoView({ behavior: still ? "auto" : "smooth" });
+      }
       // Move focus with the scroll so keyboard and screen reader users land in the section.
       target.focus({ preventScroll: true });
     },

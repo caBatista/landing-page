@@ -81,6 +81,17 @@ Brand tokens (`--bg`, `--ink`, `--ink-soft`, `--muted`, `--accent`, `--accent-de
 `--muted-strong` (#5F5F64) was added because `--muted` only reaches 3:1 on the off-white
 background. Use it for small grey text on light surfaces.
 
+## Touch screens
+
+Phones and tablets (`pointer: coarse`) get their own, lighter behaviour on the same code:
+
+- Native scrolling only: no Lenis, no scroll-scrubbed parallax. The gallery is a native swipe
+  row with snapping instead of a pinned, scroll-hijacked section.
+- Project cards have no hover, so their screenshots crossfade to the alternate view by themselves.
+- A lighter 3D scene (lower resolution, simpler bevel, no clearcoat) and tap targets of 36px or more.
+- The pinned gallery and parallax are gated by the `pin` Tailwind variant and `MOTION.desktop`
+  (mouse or trackpad, motion allowed), so desktop is unchanged.
+
 ## Motion and accessibility notes
 
 - With `prefers-reduced-motion`: no smooth scrolling, preloader, pinning, 3D or morphing.

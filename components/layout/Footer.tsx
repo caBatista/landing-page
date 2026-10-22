@@ -11,7 +11,7 @@ import { LocaleToggle } from "./LocaleToggle";
 
 export function Footer({ locale }: { locale: Locale }) {
   const home = homePath(locale);
-  const linkClass = "transition-colors hover:text-accent";
+  const linkClass = "inline-block py-1 transition-colors hover:text-accent";
 
   return (
     <footer className="dark-surface overflow-hidden bg-ink text-bg">
@@ -23,7 +23,7 @@ export function Footer({ locale }: { locale: Locale }) {
           </div>
 
           <nav aria-label={ui.mainNav[locale]} className="md:col-span-3">
-            <ul className="space-y-2 text-lg">
+            <ul className="space-y-1 text-lg">
               {nav.map((item) => (
                 <li key={item.id}>
                   <a href={`${home}#${item.id}`} className={linkClass}>
@@ -34,7 +34,7 @@ export function Footer({ locale }: { locale: Locale }) {
             </ul>
           </nav>
 
-          <ul className="space-y-2 text-lg md:col-span-2">
+          <ul className="space-y-1 text-lg md:col-span-2">
             {socials.map((social) => (
               <li key={social.id}>
                 <a
@@ -53,7 +53,7 @@ export function Footer({ locale }: { locale: Locale }) {
             <LocaleToggle locale={locale} className="rounded-full p-1.5 ring-1 ring-white/15" />
             <a
               href={`${home}#top`}
-              className="flex items-center gap-2 label text-muted hover:text-accent"
+              className="flex min-h-10 items-center gap-2 label text-muted hover:text-accent"
             >
               {ui.footer.backToTop[locale]} <span aria-hidden>↑</span>
             </a>

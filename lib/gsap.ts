@@ -13,6 +13,8 @@ ScrollTrigger.config({ ignoreMobileResize: true });
 export const MOTION = {
   ok: "(prefers-reduced-motion: no-preference)",
   reduce: "(prefers-reduced-motion: reduce)",
+  /** Precise pointer + motion allowed: the only case for scroll-driven effects (see the `pin` variant). */
+  desktop: "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
 } as const;
 
 /** Plugins used by deferred, below-the-fold effects: loaded on demand, not at startup. */

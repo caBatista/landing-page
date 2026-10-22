@@ -10,6 +10,9 @@ import { site } from "@/content/site";
 
 type Input = { x: number; y: number };
 
+/** Phones and tablets get a lighter scene: lower resolution, simpler bevel, no clearcoat pass. */
+const TOUCH = typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
+
 /** Extruded CB monogram from the same path data as the SVG logo. */
 function useMonogramGeometry() {
   return useMemo(() => {
@@ -20,8 +23,8 @@ function useMonogramGeometry() {
       bevelEnabled: true,
       bevelThickness: 5,
       bevelSize: 3,
-      bevelSegments: 8,
-      curveSegments: 32,
+      bevelSegments: TOUCH ? 3 : 8,
+      curveSegments: TOUCH ? 14 : 32,
     });
     geometry.center();
     return geometry;
@@ -51,7 +54,7 @@ function Monogram({ input }: { input: React.RefObject<Input> }) {
           color="#f4b400"
           metalness={0.75}
           roughness={0.22}
-          clearcoat={1}
+          clearcoat={TOUCH ? 0 : 1}
           clearcoatRoughness={0.15}
           envMapIntensity={0.9}
         />
@@ -70,7 +73,7 @@ type MonogramCanvasProps = {
 export default function MonogramCanvas({ input, active, onReady }: MonogramCanvasProps) {
   return (
     <Canvas
-      dpr={[1, 1.75]}
+      dpr={TOUCH ? [1, 1.5] : [1, 1.75]}
       frameloop={active ? "always" : "never"}
       camera={{ position: [0, 0, 9], fov: 32 }}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
@@ -81,7 +84,7 @@ export default function MonogramCanvas({ input, active, onReady }: MonogramCanva
       <directionalLight position={[3, 4, 5]} intensity={1.2} />
       <Monogram input={input} />
       {/* Studio lighting rendered locally: no HDR download. */}
-      <Environment resolution={256} frames={1}>
+      <Environment resolution={TOUCH ? 128 : 256} frames={1}>
         <Lightformer form="rect" intensity={1.4} position={[-4, 3, 8]} scale={[7, 4, 1]} />
         <Lightformer
           form="rect"

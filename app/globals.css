@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/*
+ * "pin": a precise pointer (mouse/trackpad) and motion allowed. Scroll-driven
+ * effects (pinned gallery, parallax) are for that case only; touch screens and
+ * reduced-motion visitors get native scrolling instead.
+ */
+@custom-variant pin (@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference));
+
 /* Brand tokens. Shared by the public site and future private tools. */
 :root {
   --bg: #f4f2ec;
@@ -38,6 +45,7 @@
     background: var(--bg);
     color: var(--ink);
     -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgb(244 180 0 / 0.22);
     color-scheme: light;
   }
 
@@ -112,7 +120,8 @@ html.lenis body {
 .lenis:not(.lenis-autoToggle).lenis-stopped {
   overflow: clip;
 }
-.lenis [data-lenis-prevent] {
+/* Scrollable layers (menu, dialogs) must not pass their scroll on to the page behind them. */
+[data-lenis-prevent] {
   overscroll-behavior: contain;
 }
 
@@ -215,6 +224,31 @@ html[data-visited] {
   from {
     opacity: 0;
     translate: 0 24px;
+  }
+}
+
+/*
+ * Touch screens have no hover, so the project screenshots crossfade to their
+ * alternate view by themselves (opacity only: compositor-friendly).
+ */
+@media (hover: none) and (prefers-reduced-motion: no-preference) {
+  .touch-swap {
+    clip-path: none;
+    opacity: 0;
+    animation: touch-swap 7s ease-in-out infinite;
+  }
+}
+@keyframes touch-swap {
+  0%,
+  38% {
+    opacity: 0;
+  }
+  50%,
+  88% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
