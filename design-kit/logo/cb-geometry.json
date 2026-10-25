@@ -1,0 +1,28 @@
+{
+  "note": "Single even-odd path per variant, drawn upright on a 100-unit cap height and slanted forward 12 degrees via `transform`. Fill with fill-rule=evenodd. Source of truth: components/brand/monogram.ts in the landing-page repo.",
+  "slantDegrees": 12,
+  "chosen": "sprint",
+  "variants": {
+    "sprint": {
+      "viewBox": "0 0 146 100",
+      "width": 146,
+      "height": 100,
+      "transform": "translate(21.26 0) skewX(-12)",
+      "d": "M58 0H30A30 30 0 0 0 0 30V70A30 30 0 0 0 30 100H99A25 25 0 0 0 99 50A25 25 0 0 0 99 0H66V78H32A10 10 0 0 1 22 68V32A10 10 0 0 1 32 22H58Z M88 22H95.5A8.5 8.5 0 0 1 95.5 39H88Z M88 61H95.5A8.5 8.5 0 0 1 95.5 78H88Z"
+    },
+    "angular": {
+      "viewBox": "0 0 146 100",
+      "width": 146,
+      "height": 100,
+      "transform": "translate(21.26 0) skewX(-12)",
+      "d": "M58 0H18L0 18V82L18 100H58V78H26L22 74V26L26 22H58Z M66 0H110L124 14V36L114 50L124 64V86L110 100H66Z M88 22H100L102 24V37L100 39H88Z M88 61H100L102 63V76L100 78H88Z"
+    },
+    "plate": {
+      "viewBox": "0 0 205 136",
+      "width": 205,
+      "height": 136,
+      "transform": "translate(51.08 18) skewX(-12)",
+      "d": "M-4 -18H128A22 22 0 0 1 150 4V96A22 22 0 0 1 128 118H-4A22 22 0 0 1 -26 96V4A22 22 0 0 1 -4 -18Z M58 0H30A30 30 0 0 0 0 30V70A30 30 0 0 0 30 100H99A25 25 0 0 0 99 50A25 25 0 0 0 99 0H66V78H32A10 10 0 0 1 22 68V32A10 10 0 0 1 32 22H58Z M88 22H95.5A8.5 8.5 0 0 1 95.5 39H88Z M88 61H95.5A8.5 8.5 0 0 1 95.5 78H88Z"
+    }
+  }
+}

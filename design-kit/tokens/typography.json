@@ -1,0 +1,39 @@
+{
+  "families": {
+    "display": {
+      "name": "Big Shoulders Display (Google Fonts name: Big Shoulders)",
+      "file": "fonts/BigShoulders-Black.ttf",
+      "note": "The file is the Black (900) static instance at the 72pt optical size. The website uses the variable font with the optical-size axis.",
+      "weight": 900,
+      "style": "UPPERCASE only. line-height 0.82, letter-spacing -0.015em.",
+      "use": "Names, big numerals, headings, huge closing phrases. Condensed, sporty, stadium-sign energy."
+    },
+    "body": {
+      "name": "Geist",
+      "file": "fonts/Geist-Medium.ttf",
+      "note": "File is the Medium (500) weight; the website uses the variable font.",
+      "use": "Running text and interface copy. Neutral, clean."
+    },
+    "mono": {
+      "name": "Geist Mono",
+      "file": "fonts/GeistMono-Medium.ttf",
+      "weight": 500,
+      "style": "UPPERCASE, 12px, line-height 1.2, letter-spacing 0.06em.",
+      "use": "Small labels and captions: places, years, URLs, stats captions. A nod to the engineering background."
+    }
+  },
+  "licenses": "All three are SIL Open Font License 1.1. License texts are next to the font files (fonts/OFL-*.txt).",
+  "scale": {
+    "note": "Display text is deliberately huge and confident. On the site it is clamp()ed between about 5rem and 22rem; headings split over two lines.",
+    "display-hero": "clamp(4.75rem, min(31vw, 40svh), 30rem)",
+    "display-section": "clamp(5rem, 16vw, 14rem)",
+    "display-card": "clamp(2.75rem, 5vw, 4.5rem)",
+    "label": "0.75rem"
+  },
+  "patterns": [
+    "Two-line split display heading: first line flush left, second line indented about 0.4-0.6em (CAIO / BATISTA, ON / CODE, OFF / CODE).",
+    "Outlined numerals: display type with a transparent fill and a 1.5px ink stroke; they fill solid on emphasis (used for the year on the timeline).",
+    "Bold key words inside body copy with an amber band under them (a highlighter), amber used as a fill, never as text colour on light.",
+    "Mono caps captions with wide tracking carry the small facts (PORTO ALEGRE, 2026)."
+  ]
+}

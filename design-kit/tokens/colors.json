@@ -1,0 +1,89 @@
+{
+  "$schema-note": "Brand colour tokens. Source of truth for the website: app/globals.css in the landing-page repo.",
+  "colors": {
+    "bg": { "hex": "#F4F2EC", "role": "Off-white base. Main light surface." },
+    "ink": { "hex": "#111112", "role": "Primary text and the dark full-bleed sections." },
+    "ink-soft": { "hex": "#2A2A2D", "role": "Dark grey surface: cards and panels on ink." },
+    "muted": {
+      "hex": "#8A8A8F",
+      "role": "Secondary text and captions, on dark surfaces only (5.5:1 on ink)."
+    },
+    "muted-strong": {
+      "hex": "#5F5F64",
+      "role": "Secondary text on the off-white base (5.7:1). Added because muted only reaches 3.1:1 on off-white."
+    },
+    "accent": {
+      "hex": "#F4B400",
+      "role": "The signature warm amber. The one loud colour: highlights, the mark, key words, buttons, blobs, the 3D hero object."
+    },
+    "accent-deep": {
+      "hex": "#E08A00",
+      "role": "Orange variant for hover/active states, depth and gradients (amber to deep amber, 135 degrees)."
+    }
+  },
+  "gradients": {
+    "amber": "linear-gradient(135deg, #F4B400, #E08A00)",
+    "note": "Used on the blob shapes. Radial variant on the 3D object: highlight at 35% 30%."
+  },
+  "contrast": [
+    { "foreground": "ink", "background": "bg", "ratio": 16.86, "use": "body text on light" },
+    { "foreground": "bg", "background": "ink", "ratio": 16.86, "use": "body text on dark" },
+    {
+      "foreground": "accent",
+      "background": "ink",
+      "ratio": 10.22,
+      "use": "amber text, numbers and marks on dark: OK"
+    },
+    {
+      "foreground": "ink",
+      "background": "accent",
+      "ratio": 10.22,
+      "use": "ink text and numbers on an amber fill: OK"
+    },
+    {
+      "foreground": "accent-deep",
+      "background": "ink",
+      "ratio": 7.01,
+      "use": "OK for large text and graphics"
+    },
+    {
+      "foreground": "accent",
+      "background": "ink-soft",
+      "ratio": 7.75,
+      "use": "stat numerals on dark cards: OK"
+    },
+    { "foreground": "bg", "background": "ink-soft", "ratio": 12.78, "use": "text on dark cards" },
+    { "foreground": "muted", "background": "ink", "ratio": 5.49, "use": "captions on dark" },
+    { "foreground": "muted-strong", "background": "bg", "ratio": 5.67, "use": "captions on light" },
+    {
+      "foreground": "muted",
+      "background": "bg",
+      "ratio": 3.07,
+      "use": "FAILS for small text. Do not use muted on off-white."
+    },
+    {
+      "foreground": "accent",
+      "background": "bg",
+      "ratio": 1.65,
+      "use": "FAILS. Never put amber text or thin amber lines on off-white."
+    },
+    {
+      "foreground": "accent-deep",
+      "background": "bg",
+      "ratio": 2.4,
+      "use": "FAILS for text. Fills only."
+    },
+    {
+      "foreground": "accent",
+      "background": "accent-deep",
+      "ratio": 1.46,
+      "use": "Do not separate shapes by these two alone: too close."
+    }
+  ],
+  "rules": [
+    "Amber is text only on ink (or ink-soft). On light surfaces amber is a fill, with ink on top.",
+    "Light theme with full-bleed ink sections for rhythm. No other background colours.",
+    "Amber is used sparingly. Guideline for liveries: about 70-80% off-white/ink, up to roughly 20% amber, deep amber a few percent at most.",
+    "Do not introduce new hues. Greys are limited to ink-soft, muted and muted-strong."
+  ]
+}
