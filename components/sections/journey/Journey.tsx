@@ -38,7 +38,7 @@ export function Journey({ locale }: { locale: Locale }) {
           {/* The track */}
           <span
             aria-hidden
-            className="absolute top-2 bottom-2 left-[5px] w-0.5 bg-ink/15 lg:top-[5px] lg:right-0 lg:bottom-auto lg:left-0 lg:h-0.5 lg:w-auto"
+            className="absolute top-2 bottom-2 left-[5px] w-0.5 bg-steel/40 lg:top-[5px] lg:right-0 lg:bottom-auto lg:left-0 lg:h-0.5 lg:w-auto"
           />
           {timeline.map((milestone, index) => {
             const current = index === last;
@@ -48,13 +48,13 @@ export function Journey({ locale }: { locale: Locale }) {
                   aria-hidden
                   className={cn(
                     "absolute top-8 -left-8 size-3 rounded-full border-2 border-bg lg:-top-12 lg:left-0",
-                    current ? "bg-accent-deep ring-4 ring-accent/40" : "bg-ink",
+                    current ? "bg-accent-deep ring-4 ring-accent/40" : "bg-steel",
                   )}
                 />
                 <article
                   className={cn(
                     "group flex h-full flex-col gap-4 rounded-2xl p-6 transition-[translate,background-color] duration-500 ease-out-expo hover:-translate-y-1.5",
-                    current ? "bg-accent text-ink" : "bg-ink/[0.04] hover:bg-ink/[0.08]",
+                    current ? "bg-accent text-ink" : "bg-mist hover:bg-steel/20",
                   )}
                 >
                   <div className="flex items-start justify-between gap-3">

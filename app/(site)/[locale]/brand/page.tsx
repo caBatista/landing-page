@@ -3,6 +3,7 @@ import { Logo } from "@/components/brand/Logo";
 import { Signature } from "@/components/brand/Signature";
 import { logoVariantNames, logoVariants, monogramSvg } from "@/components/brand/monogram";
 import { site } from "@/content/site";
+import { colors } from "@/lib/colors";
 
 export const metadata: Metadata = {
   title: "Brand",
@@ -12,13 +13,16 @@ export const metadata: Metadata = {
 const FAVICON_SIZES = [16, 24, 32, 48, 64];
 
 const swatches = [
-  ["--bg", "#F4F2EC", "bg-bg text-ink"],
-  ["--ink", "#111112", "bg-ink text-bg"],
-  ["--ink-soft", "#2A2A2D", "bg-ink-soft text-bg"],
-  ["--muted", "#8A8A8F", "bg-muted text-ink"],
-  ["--muted-strong", "#5F5F64", "bg-muted-strong text-bg"],
-  ["--accent", "#F4B400", "bg-accent text-ink"],
-  ["--accent-deep", "#E08A00", "bg-accent-deep text-ink"],
+  ["--bg", colors.bg, "bg-bg text-ink"],
+  ["--ink", colors.ink, "bg-ink text-bg"],
+  ["--ink-soft", colors.inkSoft, "bg-ink-soft text-bg"],
+  ["--muted", colors.muted, "bg-muted text-ink"],
+  ["--muted-strong", colors.mutedStrong, "bg-muted-strong text-bg"],
+  ["--accent", colors.accent, "bg-accent text-ink"],
+  ["--accent-deep", colors.accentDeep, "bg-accent-deep text-ink"],
+  ["--steel", colors.steel, "bg-steel text-bg"],
+  ["--steel-light", colors.steelLight, "bg-steel-light text-ink"],
+  ["--mist", colors.mist, "bg-mist text-ink"],
 ] as const;
 
 /** Hidden page for choosing the logo. Not linked, not indexed. */
@@ -37,7 +41,7 @@ export default function BrandPage() {
       </header>
 
       {logoVariants.map((variant) => {
-        const favicon = `data:image/svg+xml;utf8,${encodeURIComponent(monogramSvg(variant, "#F4B400", "#111112"))}`;
+        const favicon = `data:image/svg+xml;utf8,${encodeURIComponent(monogramSvg(variant, colors.accent, colors.ink))}`;
         return (
           <section key={variant} aria-labelledby={`logo-${variant}`} className="space-y-6">
             <h2 id={`logo-${variant}`} className="label">
@@ -105,7 +109,7 @@ export default function BrandPage() {
         <h2 id="colors" className="label">
           Colour tokens
         </h2>
-        <ul className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-7">
+        <ul className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-5">
           {swatches.map(([token, hex, classes]) => (
             <li
               key={token}

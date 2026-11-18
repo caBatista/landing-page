@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { site } from "@/content/site";
+import { colors } from "@/lib/colors";
 import { monogramImage, ogFonts } from "@/lib/og";
 
 export const alt = `${site.name} — ${site.role.en}`;
@@ -7,7 +8,7 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function OpenGraphImage() {
-  const logo = monogramImage("#F4B400", 100);
+  const logo = monogramImage(colors.accent, 100);
   return new ImageResponse(
     <div
       style={{
@@ -17,8 +18,8 @@ export default async function OpenGraphImage() {
         flexDirection: "column",
         justifyContent: "space-between",
         padding: 64,
-        background: "#111112",
-        color: "#F4F2EC",
+        background: colors.ink,
+        color: colors.bg,
         position: "relative",
       }}
     >
@@ -30,12 +31,12 @@ export default async function OpenGraphImage() {
           width: 620,
           height: 620,
           borderRadius: "46% 54% 42% 58% / 52% 44% 56% 48%",
-          background: "linear-gradient(135deg, #F4B400, #E08A00)",
+          background: `linear-gradient(135deg, ${colors.accent}, ${colors.accentDeep})`,
         }}
       />
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <img src={logo.src} width={logo.width} height={logo.height} alt="" />
-        <div style={{ fontFamily: "Mono", fontSize: 22, letterSpacing: 2, color: "#8A8A8F" }}>
+        <div style={{ fontFamily: "Mono", fontSize: 22, letterSpacing: 2, color: colors.muted }}>
           CAIOBATISTA.DEV
         </div>
       </div>

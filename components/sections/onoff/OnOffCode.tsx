@@ -27,7 +27,7 @@ export function OnOffCode({ locale }: { locale: Locale }) {
           href={`#${target}`}
           className={cn(
             "group relative isolate flex min-h-[64svh] flex-col justify-between gap-16 overflow-hidden px-gutter py-14 md:min-h-svh md:py-20",
-            dark ? "dark-surface bg-ink text-bg" : "bg-bg text-ink",
+            dark ? "dark-surface bg-ink text-bg" : "bg-mist text-ink",
           )}
         >
           {/* Fill that rises on hover */}

@@ -7,6 +7,7 @@ import { ExtrudeGeometry, MathUtils, type Group } from "three";
 import { SVGLoader } from "three/addons/loaders/SVGLoader.js";
 import { monogramSvg } from "@/components/brand/monogram";
 import { site } from "@/content/site";
+import { colors } from "@/lib/colors";
 
 type Input = { x: number; y: number };
 
@@ -51,12 +52,12 @@ function Monogram({ input }: { input: React.RefObject<Input> }) {
       {/* SVG space is y-down: flip and scale to world units. */}
       <mesh geometry={geometry} scale={[0.024, -0.024, 0.024]}>
         <meshPhysicalMaterial
-          color="#f4b400"
-          metalness={0.75}
-          roughness={0.22}
+          color={colors.accent}
+          metalness={0.35}
+          roughness={0.3}
           clearcoat={TOUCH ? 0 : 1}
-          clearcoatRoughness={0.15}
-          envMapIntensity={0.9}
+          clearcoatRoughness={0.08}
+          envMapIntensity={1.15}
         />
       </mesh>
     </group>
@@ -80,7 +81,7 @@ export default function MonogramCanvas({ input, active, onReady }: MonogramCanva
       onCreated={() => requestAnimationFrame(onReady)}
       aria-hidden
     >
-      <ambientLight intensity={0.6} />
+      <ambientLight intensity={0.9} />
       <directionalLight position={[3, 4, 5]} intensity={1.2} />
       <Monogram input={input} />
       {/* Studio lighting rendered locally: no HDR download. */}
@@ -88,7 +89,7 @@ export default function MonogramCanvas({ input, active, onReady }: MonogramCanva
         <Lightformer form="rect" intensity={1.4} position={[-4, 3, 8]} scale={[7, 4, 1]} />
         <Lightformer
           form="rect"
-          color="#e08a00"
+          color={colors.accentDeep}
           intensity={0.6}
           position={[4, -3, 8]}
           scale={[8, 3, 1]}
@@ -108,7 +109,13 @@ export default function MonogramCanvas({ input, active, onReady }: MonogramCanva
           rotation-y={-Math.PI / 2}
           scale={[8, 3, 1]}
         />
-        <Lightformer form="ring" color="#e08a00" intensity={2} position={[0, -3, -4]} scale={4} />
+        <Lightformer
+          form="ring"
+          color={colors.accentDeep}
+          intensity={2}
+          position={[0, -3, -4]}
+          scale={4}
+        />
       </Environment>
     </Canvas>
   );
