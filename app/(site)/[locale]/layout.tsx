@@ -9,7 +9,6 @@ import { site } from "@/content/site";
 import { ui } from "@/content/ui";
 import { homePath, localeTags, locales } from "@/i18n/config";
 import { getLocale } from "@/i18n/server";
-import { colors } from "@/lib/colors";
 import { fontVariables } from "@/lib/fonts";
 import { visitedScript } from "@/lib/intro";
 
@@ -61,7 +60,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export const viewport: Viewport = {
-  themeColor: colors.bg,
+  themeColor: "#f4f2ec",
 };
 
 export default async function SiteLayout({ children }: LayoutProps<"/[locale]">) {

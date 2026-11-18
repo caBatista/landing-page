@@ -9,16 +9,13 @@
 
 /* Brand tokens. Shared by the public site and future private tools. */
 :root {
-  --bg: #f4f3f1;
-  --ink: #12151a;
-  --ink-soft: #1e232c;
-  --muted: #8d9aaf; /* secondary text on dark surfaces (6.4:1 on ink) */
-  --muted-strong: #566175; /* secondary text on --bg (5.6:1, AA) */
-  --accent: #ff3d55; /* Rosso Corsa: fill on light, text only on ink (5.3:1) */
-  --accent-deep: #e0112e;
-  --steel: #5a6b81; /* cool support colour on light: tags, lines, dots (4.9:1 on --bg) */
-  --steel-light: #7d8fa6; /* the same colour on dark surfaces (5.5:1 on ink) */
-  --mist: #e9ecef; /* cool tint for surfaces on light */
+  --bg: #f4f2ec;
+  --ink: #111112;
+  --ink-soft: #2a2a2d;
+  --muted: #8a8a8f; /* secondary text on dark surfaces (5.5:1 on ink) */
+  --muted-strong: #5f5f64; /* secondary text on --bg (5.7:1, AA) */
+  --accent: #f4b400;
+  --accent-deep: #e08a00;
 
   --gutter: clamp(1.25rem, 3.5vw, 3rem);
 }
@@ -31,9 +28,6 @@
   --color-muted-strong: var(--muted-strong);
   --color-accent: var(--accent);
   --color-accent-deep: var(--accent-deep);
-  --color-steel: var(--steel);
-  --color-steel-light: var(--steel-light);
-  --color-mist: var(--mist);
 
   --font-display: var(--font-big-shoulders), "Arial Narrow", sans-serif;
   --font-sans: var(--font-geist), system-ui, sans-serif;
@@ -51,7 +45,7 @@
     background: var(--bg);
     color: var(--ink);
     -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: rgb(255 61 85 / 0.22);
+    -webkit-tap-highlight-color: rgb(244 180 0 / 0.22);
     color-scheme: light;
   }
 

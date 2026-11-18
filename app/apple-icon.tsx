@@ -1,12 +1,11 @@
 import { ImageResponse } from "next/og";
-import { colors } from "@/lib/colors";
 import { monogramImage } from "@/lib/og";
 
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
 
 export default function AppleIcon() {
-  const logo = monogramImage(colors.accent, 80);
+  const logo = monogramImage("#F4B400", 80);
   return new ImageResponse(
     <div
       style={{
@@ -15,7 +14,7 @@ export default function AppleIcon() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: colors.ink,
+        background: "#111112",
       }}
     >
       <img src={logo.src} width={logo.width} height={logo.height} alt="" />
