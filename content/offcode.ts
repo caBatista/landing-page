@@ -18,6 +18,7 @@ export type OffCodeBlock = {
 
 /** Newest first. */
 export const races: RaceResult[] = [
+  { race: "Panvel Run", distanceKm: 5, time: "22:59", date: "2026-11" },
   { race: "Corrida da Longevidade", distanceKm: 5, time: "25:24", date: "2026-09" },
   { race: "Corrida do Inter", distanceKm: 10, time: "55:08", date: "2026-08" },
   { race: "Maratona Internacional de Maceió", distanceKm: 5, time: "26:22", date: "2026-07" },
