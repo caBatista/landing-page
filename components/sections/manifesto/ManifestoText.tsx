@@ -3,7 +3,6 @@
 import { useRef } from "react";
 import { afterIdle } from "@/lib/idle";
 import type { SplitText as SplitTextType } from "gsap/SplitText";
-import { colors } from "@/lib/colors";
 import { gsap, MOTION, useGSAP } from "@/lib/gsap";
 
 /** SplitText is only needed once the manifesto is set up at idle time. */
@@ -36,10 +35,10 @@ export function ManifestoText({
           });
           gsap.fromTo(
             split.words,
-            // From a soft grey (AA for large text on the off-white base) to ink.
-            { color: colors.dim },
+            // From --muted (3:1 at this size, AA for large text) to ink.
+            { color: "#8a8a8f" },
             {
-              color: colors.ink,
+              color: "#111112",
               stagger: 0.1,
               ease: "none",
               scrollTrigger: {
