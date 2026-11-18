@@ -13,7 +13,7 @@ type BlobProps = {
   speed?: number;
 };
 
-/** Amber organic shape that slowly morphs and drifts. Pauses off screen; static for reduced motion. */
+/** Accent-coloured organic shape that slowly morphs and drifts. Pauses off screen; static for reduced motion. */
 export function Blob({ seed, className, speed = 7 }: BlobProps) {
   const root = useRef<SVGSVGElement>(null);
   const gradient = useId();

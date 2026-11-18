@@ -200,7 +200,7 @@ export function MenuOverlay({ id, locale, open, onClose }: MenuOverlayProps) {
                       href={social.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="label text-bg transition-colors hover:text-accent"
+                      className="inline-block py-2.5 label text-bg transition-colors hover:text-accent"
                     >
                       {social.label}
                     </a>

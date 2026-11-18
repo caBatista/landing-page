@@ -1,0 +1,10 @@
+/* Brand colour tokens, copied from app/globals.css in the landing-page repo. */
+:root {
+  --bg: #f4f2ec; /* off-white base */
+  --ink: #111112; /* text, dark sections */
+  --ink-soft: #2a2a2d; /* cards on dark */
+  --muted: #8a8a8f; /* secondary text on dark (5.5:1 on ink) */
+  --muted-strong: #5f5f64; /* secondary text on --bg (5.7:1, AA) */
+  --accent: #f4b400; /* signature amber */
+  --accent-deep: #e08a00; /* hover, depth, gradients */
+}

@@ -100,7 +100,7 @@ export function HeroMonogram({ className }: { className?: string }) {
     <div ref={root} className={cn("relative", className)}>
       <Logo
         className={cn(
-          "absolute inset-[16%] text-accent drop-shadow-[0_24px_40px_rgba(224,138,0,0.35)] transition-opacity duration-700",
+          "absolute inset-[16%] text-accent drop-shadow-[0_24px_40px_rgba(255,61,85,0.35)] transition-opacity duration-700",
           ready && showCanvas && "opacity-0",
         )}
       />

@@ -42,20 +42,23 @@ export function ParallaxImage({
             { clipPath: "inset(100% 0% 0% 0%)" },
             { clipPath: "inset(0% 0% 0% 0%)", duration: 1.4, ease: "expo.inOut", paused: true },
           );
-          gsap.fromTo(
-            img,
-            { yPercent: 0 },
-            {
-              yPercent: -amount,
-              ease: "none",
-              scrollTrigger: {
-                trigger: frame.current,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true,
+          // Scroll-scrubbed drift only with a precise pointer; on touch it lags behind native scrolling.
+          if (window.matchMedia(MOTION.desktop).matches) {
+            gsap.fromTo(
+              img,
+              { yPercent: 0 },
+              {
+                yPercent: -amount,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: frame.current,
+                  start: "top bottom",
+                  end: "bottom top",
+                  scrub: true,
+                },
               },
-            },
-          );
+            );
+          }
           return onceInView(frame.current!, () => wipe.play(), 0.12);
         });
       });
@@ -72,7 +75,7 @@ export function ParallaxImage({
         fill
         sizes={sizes}
         // Zoom from the top edge and only drift upward, so the top of the picture is never cropped by more than `amount`.
-        className="origin-top scale-[1.08] object-cover"
+        className="object-cover pin:origin-top pin:scale-[1.08]"
         style={{ objectPosition: focal }}
       />
     </div>

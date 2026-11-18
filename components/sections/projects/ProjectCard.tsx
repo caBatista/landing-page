@@ -14,7 +14,11 @@ function Links({ project, locale }: { project: Project; locale: Locale }) {
     <ul className="flex flex-wrap gap-x-5 gap-y-2">
       {project.links.map((link) => (
         <li key={link.href}>
-          <ExternalLink href={link.href} newTabLabel={copy.newTab[locale]} className="label">
+          <ExternalLink
+            href={link.href}
+            newTabLabel={copy.newTab[locale]}
+            className="min-h-10 label"
+          >
             {copy.links[link.kind][locale]}
           </ExternalLink>
         </li>
@@ -41,7 +45,7 @@ export function ProjectCard({
 
       <div className="flex items-start justify-between gap-4 border-t border-ink/15 pt-5">
         <div>
-          <p className="mb-2 label text-muted-strong">
+          <p className="mb-3 label text-muted-strong">
             {String(index + 1).padStart(2, "0")} · {project.context[locale]}
           </p>
           <h3 className="display text-[clamp(2.75rem,5vw,4.5rem)]">{project.name}</h3>

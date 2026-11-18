@@ -26,8 +26,10 @@ export function Header({ locale }: { locale: Locale }) {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
         const y = window.scrollY;
+        // iOS rubber-banding reports positions past either end: ignore them so the bounce doesn't flip the header.
+        if (y < 0 || y > document.documentElement.scrollHeight - window.innerHeight) return;
         const delta = y - lastY.current;
-        if (Math.abs(delta) > 4) setHidden(delta > 0 && y > 120);
+        if (Math.abs(delta) > 8) setHidden(delta > 0 && y > 120);
         lastY.current = y;
       });
     };
@@ -63,7 +65,7 @@ export function Header({ locale }: { locale: Locale }) {
         </a>
 
         <div className="pointer-events-auto flex items-center gap-2">
-          <LocaleToggle locale={locale} className={cn("rounded-full p-1.5", chip)} />
+          <LocaleToggle locale={locale} className={cn("rounded-full p-1", chip)} />
           <Magnetic>
             <button
               type="button"

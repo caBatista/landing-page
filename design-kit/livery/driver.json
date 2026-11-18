@@ -1,0 +1,29 @@
+{
+  "name": "Caio Batista",
+  "displayName": "CAIO BATISTA",
+  "monogram": "CB",
+  "website": "caiobatista.dev",
+  "handles": { "github": "caBatista", "instagram": "caiobaatista" },
+  "location": "Porto Alegre, Brazil",
+  "role": "Software Engineer @ SAP (do not put employer logos on liveries, see AGENTS.md)",
+  "taglines": {
+    "en": "Zero downtime. Full throttle.",
+    "pt": "Zero downtime. Pé no fundo."
+  },
+  "keywords": [
+    "backend systems",
+    "big data",
+    "personal records",
+    "running",
+    "sim racing",
+    "volleyball"
+  ],
+  "todo-ask-the-user": {
+    "carNumber": "TODO: preferred car number (and whether it should be the same on every car)",
+    "iracingCustomerId": "TODO: needed for paint file names and for Trading Paints",
+    "cars": "TODO: which cars/series to start with",
+    "helmetAndSuit": "TODO: helmet and suit too?",
+    "sponsorDecals": "TODO: any decals besides the CB mark and the website URL?",
+    "concept": "TODO: pick a starting concept from livery/README.md"
+  }
+}

@@ -19,7 +19,7 @@ export function LocaleToggle({ locale, className }: LocaleToggleProps) {
                 lang={localeTags[target]}
                 aria-current={current ? "true" : undefined}
                 className={cn(
-                  "grid h-8 min-w-9 place-items-center rounded-full px-2 label transition-colors",
+                  "grid h-9 min-w-10 place-items-center rounded-full px-2 label transition-colors",
                   current ? "bg-accent text-ink" : "hover:text-accent",
                 )}
               >

@@ -45,6 +45,7 @@ export const ui = {
 
   gallery: {
     title: { en: "Moments off the keyboard", pt: "Momentos longe do teclado" },
+    swipe: { en: "Swipe", pt: "Deslize" },
   },
 
   onOff: {

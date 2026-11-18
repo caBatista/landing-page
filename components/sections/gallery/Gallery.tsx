@@ -10,7 +10,7 @@ export function Gallery({ locale }: { locale: Locale }) {
       <h2 id="gallery-title" className="sr-only">
         {ui.gallery.title[locale]}
       </h2>
-      <GalleryTrack className="flex h-svh items-center overflow-x-auto overflow-y-hidden overscroll-x-contain motion-safe:overflow-x-visible motion-reduce:snap-x motion-reduce:snap-mandatory">
+      <GalleryTrack className="flex snap-x snap-mandatory scroll-px-gutter [scrollbar-width:none] items-center overflow-x-auto overflow-y-hidden overscroll-x-contain py-20 pin:h-svh pin:snap-none pin:overflow-x-visible pin:py-0 [&::-webkit-scrollbar]:hidden">
         <ul data-track className="flex w-max items-center gap-[max(1.5rem,5vw)] container-x">
           {gallery.map((item, index) =>
             item.type === "photo" ? (
@@ -29,7 +29,7 @@ export function Gallery({ locale }: { locale: Locale }) {
                       alt={item.image.alt[locale]}
                       fill
                       sizes="(max-width: 768px) 82vw, 60vw"
-                      className="scale-[1.18] object-cover"
+                      className="object-cover pin:scale-[1.18]"
                     />
                   </div>
                   <figcaption className="mt-4 flex justify-between gap-6 label text-muted">
@@ -50,6 +50,12 @@ export function Gallery({ locale }: { locale: Locale }) {
           )}
         </ul>
       </GalleryTrack>
+      <p
+        aria-hidden
+        className="-mt-6 flex items-center gap-3 container-x pb-14 label text-muted pin:hidden"
+      >
+        {ui.gallery.swipe[locale]} <span className="inline-block h-px w-10 bg-accent" />
+      </p>
     </section>
   );
 }

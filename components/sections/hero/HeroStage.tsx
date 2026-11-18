@@ -15,7 +15,7 @@ export function HeroStage({ children, ...props }: React.ComponentProps<"section"
   useGSAP(
     (_, contextSafe) => {
       const parallax = contextSafe!(() => {
-        gsap.matchMedia().add(MOTION.ok, () => {
+        gsap.matchMedia().add(MOTION.desktop, () => {
           const scrub = { trigger: root.current, start: "top top", end: "bottom top", scrub: true };
           gsap.to("[data-hero-name]", { yPercent: 22, ease: "none", scrollTrigger: scrub });
           gsap.to("[data-hero-parallax]", { yPercent: -18, ease: "none", scrollTrigger: scrub });
