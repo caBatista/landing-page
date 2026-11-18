@@ -76,10 +76,14 @@ lib/                   GSAP setup, fonts, intro timing, idle scheduling, helpers
 proxy.ts               locale routing (/ → en, /pt → pt) and the /me gate
 ```
 
-Brand tokens (`--bg`, `--ink`, `--ink-soft`, `--muted`, `--accent`, `--accent-deep`) live in
-`app/globals.css` and are exposed as Tailwind colours (`bg-ink`, `text-accent`, …).
-`--muted-strong` (#5F5F64) was added because `--muted` only reaches 3:1 on the off-white
-background. Use it for small grey text on light surfaces.
+Brand tokens (`--bg`, `--ink`, `--ink-soft`, `--muted`, `--muted-strong`, `--accent`, `--accent-deep`,
+`--steel`, `--steel-light`, `--mist`) live in `app/globals.css` and are exposed as Tailwind colours
+(`bg-ink`, `text-accent`, `bg-mist`, …). The palette is **Rosso Corsa**: off-white and near-black
+carry the layout, one signal red (`--accent`) is the only loud colour, and a cool steel grey
+(`--steel`, with `--steel-light` for dark surfaces and `--mist` as a tint) supports structure and
+data. Rules: red is a fill on light surfaces and text only on ink; use `--muted-strong` for small
+grey text on light and `--muted` on dark. Code that can't use CSS variables (image generation, the
+manifest, the 3D scene) imports the same values from `lib/colors.ts`, so change both together.
 
 ## Touch screens
 
