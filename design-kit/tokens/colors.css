@@ -1,10 +1,13 @@
-/* Brand colour tokens, copied from app/globals.css in the landing-page repo. */
+/* Brand colour tokens (Rosso Corsa), copied from app/globals.css in the landing-page repo. */
 :root {
-  --bg: #f4f2ec; /* off-white base */
-  --ink: #111112; /* text, dark sections */
-  --ink-soft: #2a2a2d; /* cards on dark */
-  --muted: #8a8a8f; /* secondary text on dark (5.5:1 on ink) */
-  --muted-strong: #5f5f64; /* secondary text on --bg (5.7:1, AA) */
-  --accent: #f4b400; /* signature amber */
-  --accent-deep: #e08a00; /* hover, depth, gradients */
+  --bg: #f4f3f1; /* off-white base */
+  --ink: #12151a; /* text, dark sections */
+  --ink-soft: #1e232c; /* cards on dark */
+  --muted: #8d9aaf; /* secondary text on dark */
+  --muted-strong: #566175; /* secondary text on light */
+  --accent: #ff3d55; /* Rosso Corsa: fill on light, text only on ink */
+  --accent-deep: #e0112e; /* hover, depth, gradients */
+  --steel: #5a6b81; /* cool support colour on light */
+  --steel-light: #7d8fa6; /* the same on dark */
+  --mist: #e9ecef; /* cool tint on light */
 }

@@ -33,7 +33,7 @@
   "patterns": [
     "Two-line split display heading: first line flush left, second line indented about 0.4-0.6em (CAIO / BATISTA, ON / CODE, OFF / CODE).",
     "Outlined numerals: display type with a transparent fill and a 1.5px ink stroke; they fill solid on emphasis (used for the year on the timeline).",
-    "Bold key words inside body copy with an amber band under them (a highlighter), amber used as a fill, never as text colour on light.",
+    "Bold key words inside body copy with a red band under them (a highlighter), red used as a fill, never as text colour on light.",
     "Mono caps captions with wide tracking carry the small facts (PORTO ALEGRE, 2026)."
   ]
 }

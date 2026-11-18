@@ -9,17 +9,22 @@ can create matching work, starting with iRacing liveries.
 design-kit/
 ├── AGENTS.md            design principles, colour/type/logo rules, patterns to keep, workflow
 ├── CLAUDE.md            imports AGENTS.md for Claude Code
-├── tokens/              colors.json (with contrast ratios), colors.css, typography.json
+├── tokens/              colors.json (with contrast ratios), colors.css, typography.json, archive/ (retired amber palette)
 ├── logo/
-│   ├── svg/             CB "Sprint" (chosen): amber, ink, off-white, and two square tiles
+│   ├── svg/             CB "Sprint" (chosen): red, ink, off-white, and two square tiles (red-on-ink, ink-on-red)
 │   ├── png/             transparent 2048px renders; tiles 1024px
 │   ├── alternates/      angular and plate variants (not chosen)
 │   └── cb-geometry.json raw path, viewBox and transform for all three variants
-├── signature/           handwritten signature: ink, off-white, amber, currentColor (SVG + 2048px PNG)
+├── signature/           handwritten signature: ink, off-white, red, currentColor (SVG + 2048px PNG)
 ├── fonts/               Big Shoulders Black, Geist Medium, Geist Mono Medium + OFL licences
 ├── reference/           brand-board.png, site-*.jpg and mobile-*.jpg screenshots of the live design
 └── livery/              README.md (concepts, placement, iRacing notes, workflow) and driver.json
 ```
+
+## Palette
+
+**Rosso Corsa** (v2): off-white and blue-black, one signal red, and a cool steel for structure. It replaced the first
+amber palette, which is kept in `tokens/archive/` for reference only. Chosen from 15 candidates after testing each on the live site.
 
 ## Use it in a new session
 

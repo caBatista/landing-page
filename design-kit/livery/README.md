@@ -6,26 +6,27 @@ How to turn the brand in `../AGENTS.md` into iRacing liveries. Driver details an
 ## Starting concepts
 
 These are directions to choose from, not final designs. Each follows the patterns in `AGENTS.md`
-(12° cuts, huge condensed type, one amber accent).
+(12° cuts, huge condensed type, one red accent, cool steel for structure).
 
 ### A. "Night Run": ink base
 
-- Body in ink `#111112`. One wide amber band cutting across the car at 12°, with a thin off-white line next to it
-  and, optionally, a very thin deep-amber line (a few percent of the area).
-- Number: huge, Big Shoulders Black, off-white or amber on ink.
-- CB mark in amber. A single soft amber blob cropped by an edge as depth. Best contrast, reads well on every track.
+- Body in ink `#12151A`. One wide red band (`#FF3D55`) cutting across the car at 12°, with a thin off-white line next to it,
+  a thin steel line (`#7D8FA6`) as a technical detail and, optionally, a very thin deep-red line (a few percent of the area).
+- Number: huge, Big Shoulders Black, off-white or red on ink.
+- CB mark in red. A single soft red blob cropped by an edge as depth. Best contrast, reads well on every track.
 
 ### B. "Day Run": off-white base
 
-- Body in off-white `#F4F2EC` with big ink cuts at 12°. Amber is a **fill panel** behind the number and mark, with ink on top.
-  No amber lines or text directly on the off-white.
+- Body in off-white `#F4F3F1` (or mist `#E9ECEF` for large secondary panels) with big ink cuts at 12°. Red is a **fill panel** behind
+  the number and mark, with ink on top. No red lines or small red text directly on the off-white. Steel is fine for thin lines and microtext here.
 - The cleanest, most "website-like" option. Off-white can glare in sim lighting, so keep large ink areas.
 
-### C. "Sprint": amber base
+### C. "Rosso": red base
 
-- Body in amber `#F4B400` with ink graphics and off-white accents. Everything on top of the amber is ink or off-white.
-- The loudest option. Keep the cuts large and few; use `#E08A00` only for a thin depth line.
-- When rendering the sim spec map, aim for a glossy metallic look, like the website's hero object.
+- Body in Rosso Corsa red `#FF3D55` with ink graphics and off-white accents. Everything on top of the red is ink or off-white
+  (never steel: it does not hold up on red).
+- The loudest option. Keep the cuts large and few; use `#E0112E` only for a thin depth line.
+- When building the spec map, aim for glossy car paint (the website's hero object is red with low metal and a clear coat).
 
 ## Where things go (car-agnostic)
 
@@ -34,12 +35,12 @@ These are directions to choose from, not final designs. Each follows the pattern
 | Hood                        | Huge CB mark or the car number, large and simple                                          |
 | Roof                        | Number plus small CB (seen from above and by replay cameras)                              |
 | Doors / sides               | Name split over two lines, `CAIO / BATISTA`, second line indented; slanted stripes at 12° |
-| Number panels               | Highest-contrast pair on the whole car: ink on amber, amber on ink, or off-white on ink   |
+| Number panels               | Highest-contrast pair on the whole car: ink on red, red on ink, or off-white on ink       |
 | Rear quarter                | Signature (once, small) and mono microtext                                                |
 | Rear / bumper               | `CAIOBATISTA.DEV` in Geist Mono caps                                                      |
 | Helmet and suit (if wanted) | CB on the visor strip, stripes at 12°, same palette                                       |
 
-Mono microtext ideas: `PORTO ALEGRE`, `CAIOBATISTA.DEV`, `ZERO DOWNTIME`, `FULL THROTTLE`, `PR`, `CB`.
+Steel is for fine detail: thin lines, microtext and small secondary panels. Mono microtext ideas: `PORTO ALEGRE`, `CAIOBATISTA.DEV`, `ZERO DOWNTIME`, `FULL THROTTLE`, `PR`, `CB`.
 
 ## iRacing technical notes (verify before relying on them)
 
